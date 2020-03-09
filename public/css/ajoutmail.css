@@ -1,0 +1,30 @@
+#send2, #content{
+    color: black;
+    text-align: center;
+}
+
+
+#objmail{
+    width: 20vw;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    text-align: center;
+}
+#msgmail{
+    width: 20vw;
+    height: 15vw;
+    margin-top: 2vw;
+    margin-left: 40vw;
+    margin-right: 40vw;
+    text-align: center;
+    font-family: Arial;
+
+}
+
+#send{
+    width: 10vw;
+    margin-left: 45vw;
+    margin-right: 45vw;
+    margin-top: 1vw;
+    text-align: center;
+}

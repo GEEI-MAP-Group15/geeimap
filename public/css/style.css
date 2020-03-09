@@ -1,0 +1,41 @@
+body{
+    font-family: Arial;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#Maison {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+#banner{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0vw;
+    width: 100%;
+}
+
+#presentation{
+    font-size: 4vw;
+}
+
+#home {
+    font-size: 3vw;
+    color: #005376;
+    text-align: center;
+    margin: 2vw;
+}
+#home p{
+    margin-bottom:2vw;
+
+}
+
+
+

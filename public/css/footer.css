@@ -1,0 +1,39 @@
+#footer{
+    padding-top: 20vw;
+    font-family: Arial;
+
+}
+
+#footer_font {
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5vw;
+    background-color: #9f9f9f;
+
+}
+#footer2 {
+    position: fixed;
+    padding: 0;
+    left: 2vw;
+    bottom: -1vw;
+    background-color:transparent;
+    color: #fff;
+    text-align: left;
+}
+#footer1 {
+    position:fixed;
+    padding: 0;
+    right:2vw;
+    bottom: -1vw;
+    background-color: transparent;
+    color: #fff;
+    text-align: right;
+}
+#footer1 p{
+    font-size:1vw;
+}
+#footer2 p{
+    font-size:1vw;
+}

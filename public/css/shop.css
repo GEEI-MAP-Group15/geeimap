@@ -1,0 +1,132 @@
+.box1{
+    display: inline-block;
+    width: 50vw;
+    height: 5vw;
+    margin: 10vw;
+    position:relative;
+
+
+
+
+}
+.box2{
+    display: inline-block;
+    width: 50vw;
+    height: 5vw;
+    margin: 10vw;
+    margin-top: 15vw;
+    position:relative;
+
+
+}
+.box3{
+    display: inline-block;
+    width: 50vw;
+    height: 5vw;
+    margin: 10vw;
+    margin-top: 20vw;
+    position:relative;
+
+
+}
+.box4 {
+    display: inline-block;
+    width: 50vw;
+    height: 5vw;
+    margin: 10vw;
+    margin-top: 25vw;
+    position: relative;
+
+}
+
+h1 {
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+    font-size: 2vw;
+    font-family: Arial;
+    text-align: center;
+    padding-bottom: 2vw;
+
+}
+
+.aside img {
+    border: 0.1vw solid black;
+    border-radius: 1vw;
+}
+
+#im1 img {
+    position:absolute;
+    width: 20%;
+
+}
+
+#im2 img {
+    position:absolute;
+    width: 20%;
+}
+
+#im3 img {
+    position:absolute;
+    width: 20%;
+
+}
+
+#im4 img {
+    position:absolute;
+    width: 20%;
+
+}
+
+#txt1 {
+    position:absolute;
+    left:15vw;
+    text-align: justify;
+    padding-bottom: 2vw;
+
+}
+
+
+#txt2 {
+    position:relative;
+    left:15vw;
+    text-align: justify;
+    padding-bottom: 2vw;
+
+    }
+
+#txt3 {
+    position: relative;
+    left: 15vw;
+    text-align: justify;
+    padding-bottom: 2vw;
+
+}
+
+#txt4 {
+    position: relative;
+    left: 15vw;
+    text-align: justify;
+    padding-bottom: 2vw;
+
+}
+
+
+.aside p{
+    position:relative;
+    text-decoration: none;
+    top: 0;
+    font-size: x-small;
+    font-family: Arial;
+    margin-bottom:70%;
+}
+
+
+
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+}
+
+section a{
+    text-decoration: none;
+}

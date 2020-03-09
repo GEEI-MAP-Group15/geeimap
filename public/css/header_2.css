@@ -1,0 +1,124 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 1.8em;
+    color: #666;
+}
+
+
+header {
+    width: 100%;
+    height: 10%;
+    margin-bottom: 4vw;
+}
+
+.content {
+    width: 94%;
+    margin: 4em auto;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.logo a{
+    position: fixed;
+    color: black;
+    text-decoration: none;
+}
+
+
+img {
+    display: block;
+    width: 5%;
+    padding: 15px;
+}
+
+nav {
+    position: fixed;
+    width: 100%;
+    line-height: 60px;
+    z-index: 10;
+}
+
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+
+.wrapper nav.black ul {
+    background: #3c3f41;
+}
+
+.wrapper nav.black ul li a {
+    color: white;
+}
+.wrapper nav.black a{
+    color: white;
+}
+
+.wrapper nav ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+.wrapper nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+.menu-icon {
+    line-height: 60px;
+    width: 100%;
+    background: #3c3f41;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+
+@media (max-width: 786px) {
+
+    .logo {
+        position: fixed;
+        top: 0;
+        margin-top: 16px;
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #3c3f41;
+    }
+
+    nav.black ul {
+        background: #3c3f41;
+    }
+
+    .showing {
+        max-height: 34em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+}

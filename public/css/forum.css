@@ -1,0 +1,79 @@
+.body{
+    padding-top: 5vw;
+}
+
+.newmess{
+    text-decoration: sienna;
+}
+
+
+
+a:visited{
+    color: orangered;
+}
+
+
+.sujet{
+    border:2px solid darkblue;
+}
+.titre{
+    position:absolute;
+    left: 43vw;
+    top: 7vw;
+    font-size:xx-large;
+    color: #3c3f41;
+    font-family: "AR BLANCA";
+
+}
+.poster{
+    color:blue;
+}
+.le{
+    color:blue;
+}
+.nom{
+    color:blue;
+}
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+}
+
+input{
+    width: 13vw;
+}
+.tableau{
+    position:absolute;
+    left:10%;
+    top:45%;
+}
+.block{
+    position:absolute;
+    top:25%;
+    left:30%;
+}
+.nouveautopic{
+    margin-right:70%;
+}
+.titreTopic{
+
+
+}
+.tab{
+    width:200%;
+}
+.tab2{
+    position:absolute;
+    top:50%;
+    left:23%;
+    width:50%;
+}
+
+.sujet{
+    position:absolute;
+}
+.add{
+    position:absolute;
+    top: 55%;
+    left:2%;
+}

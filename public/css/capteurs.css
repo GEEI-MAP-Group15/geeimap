@@ -1,0 +1,40 @@
+Body{
+    font-family: Arial;
+}
+#table img {
+    width: 10vw;
+    height: auto;
+}
+#table caption
+{
+    font-size: 5vw;
+    text-align: center;
+    caption-side: top;
+}
+#table td
+{
+    border: none;
+    text-align: center;
+    background-color: transparent;
+}
+#table
+{
+    margin: 0 auto;
+    margin-bottom: 3vw;
+    border-spacing: 8vw 1vw;
+    background-color: transparent;
+}
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+}
+
+
+.myonoffswitch{
+    position:absolute;
+    top:0%;
+}
+.etattext{
+    position:absolute;
+    top:40%;
+}

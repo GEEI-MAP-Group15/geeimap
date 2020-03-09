@@ -1,0 +1,47 @@
+table{
+    margin-left: 25vw;
+    margin-right: 25vw;
+    border-spacing: 4vw;
+    font-size: 0;
+    color: black;
+}
+
+.mamaison td{
+    border:1px solid black;
+    list-style-type: none;
+    text-align: center;
+    border-radius: 2vw;
+}
+
+.mamaison a{
+    text-decoration: none;
+    position: relative;
+    top: 2.5vw;
+    font-size: 3vw;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.mamaison img {
+    float: left;
+    width: 20%;
+    margin-left: 1.8vw;
+}
+#statist{
+    width: 22%;
+}
+
+.mamaison a:visited
+{
+    color: rgb(0, 102, 196);
+}
+
+
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+
+}
+a{
+    color: rgb(0, 102, 196);
+}

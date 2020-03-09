@@ -1,0 +1,52 @@
+h1 {
+    text-align:center;
+    border-bottom: 6px solid black;
+}
+img {
+    float: left;
+}
+#question1 {
+    margin-left: 100px;
+    float: left;
+}
+#question2 {
+    margin-left: 100px;
+    float: left;
+}
+
+#question3 {
+    margin-left: 100px;
+    float: left;
+}
+#project1 {
+    float: left;
+}
+
+#project2 {
+    float: left;
+}
+#project3 {
+    float: left;
+}
+input {
+    text-decoration: none;
+    margin-left: 10vw;
+    margin-top: 1vw;
+    width: 10vw;
+    font-family: Arial;
+}
+.titre{
+position:absolute;
+left: 43vw;
+top: 7vw;
+font-size:xx-large;
+color: #3c3f41;
+font-family: "AR BLANCA";
+}
+
+.coord{
+    position:absolute;
+    left:10%;
+    top:20%;
+    font-size:x-large;
+}

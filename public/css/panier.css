@@ -1,0 +1,47 @@
+
+section {
+    text-align: center;
+    margin-top: 25vw;
+}
+
+input {
+    width: 15vw;
+    height: 3vw;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.3vw;
+    color: black;
+}
+
+#facture {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: transparent;
+    margin-top: 5vw;
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+}
+
+#facture td{
+    border: 1px solid black;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-right: 4vw;
+    padding-left: 4vw;
+
+}
+
+#facture tr {
+
+}
+
+#prix{
+    text-align: center;
+    color: black;
+    font-size: 2vw;
+}
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+}

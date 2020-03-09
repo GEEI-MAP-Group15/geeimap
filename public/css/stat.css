@@ -1,0 +1,125 @@
+
+.titre{
+    font-family: "AR BLANCA";
+    position: absolute;
+    top: 7%;
+    Left:40%;
+    font-size:4vw;
+    margin-bottom: 10%;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+}
+
+.instruction{
+    position:absolute;
+    top:30%;
+    Left:3%;
+    font-size:x-large;
+    margin-right: 25%;
+    margin-left: 30%;
+    margin-bottom: 55%;
+    color: rgb(0, 102, 196);
+
+}
+.chambre{
+    position:absolute;
+    top:15%;
+    Left:3%;
+    font-size:x-large;
+    margin-right: 55%;
+    margin-bottom: 55%;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+}
+.sdb{
+    position:absolute;
+    top:35%;
+    Left:3%;
+    font-size:x-large;
+    margin-right: 35%;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+
+}
+.cuisine{
+    position:absolute;
+    top:55%;
+    Left:3%;
+    font-size:x-large;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+
+}
+.salon{
+    position:absolute;
+    top:75%;
+    Left:3%;
+    font-size:x-large;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+
+}
+.wc{
+    position:absolute;
+    top:95%;
+    Left:3%;
+    font-size:x-large;
+    color: rgb(0, 102, 196);
+    text-transform: uppercase;
+
+}
+
+.chambrei{
+    position:absolute;
+    top:20%;
+    Left:0%;
+    width:12%;
+    height:12%;
+}
+.sdbi{
+    position:absolute;
+    top:40%;
+    Left:0%;
+    width:12%;
+    height:12%;
+}
+.cuisinei{
+    position:absolute;
+    top:60%;
+    Left:0%;
+    width:12%;
+    height:12%;
+}
+.saloni{
+    position:absolute;
+    top:80%;
+    Left:0%;
+    width:12%;
+    height:12%;
+}
+.wci{
+    position:absolute;
+    top:100%;
+    Left:0%;
+    width:12%;
+    height:12%;
+}
+
+
+body {
+    background-image: url("../Vue/image/fond.jpg");
+    background-size: cover;
+}
+
+.container{
+    position: absolute;
+    left: 25%;
+    top:23%;
+
+    width: 70%;
+}
+
+.active{
+    color:orange;
+    font-size:x-large;
+}
