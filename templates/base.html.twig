@@ -3,44 +3,39 @@
     <head>
         <meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../public/css/footer.css" />
+		<link rel="stylesheet" href="css/footer.css" />
+		<link rel="stylesheet" href="css/header_2.css" />
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-		<div id="header_font"><p> </p>
-        </div>
-        <a href="routes.yaml.php?cible=style" ><img src="image/AtHomeTransparent.png" id="logo"/></a>
-            <ul id="menu">
-
-                <li><p><a href="index.php?cible=maison">Ma Maison</a></p>
-                    <ul>
-                        <li><a href="index.php?cible=mes maisons">Mes maisons</a></li>
-                        <li><a href="index.php?cible=capteurs">capteurs</a></li>
-                        <li><a href="index.php?cible=statistics">statistiques</a></li>
-                    </ul>
-                </li>
-                <li><p><a href="index.php?cible=shop">Magasin</a></p>
-                    <ul>
-                        <li><a href="index.php?cible=shop">Capteurs</a></li>
-                        <li><a href="#">factures</a></li>
-                    </ul>
-                </li>
-                <li><p><a href="index.php?cible=myaccount">Mon Compte</a></p>
-                    <ul>
-                        <li><a href="index.php?cible=profil">profil</a></li>
-                        <li><a href="index.php?cible=gestion capteurs">Gestion capteurs</a></li>
-                        <li><a href="index.php?cible=gestion capteur utilisateur secondaire">Gestion utilisateurs</a></li>
-                        <li><a href="#">Deconnexion</a></li>
-                    </ul>
-                </li>
-                <li><p><a href="index.php?cible=Contact">Contactez Nous</a></p>
-                    <ul>
-                        <li><a href="index.php?cible=forum">Forum</a></li>
-                        <li><a href="index.php?cible=FAQ">FAQ</a></li>
-                    </ul>
-                </li>
-            </ul>
+    <body><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+           <div class="container">
+               <a class="navbar-brand" href="/">GEEI MAP</a>
+           </div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu">
+   <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse">
+   <ul class="navbar-nav ml-auto">
+   {% if app.user %}
+   		<li class="nav-item">
+           <a class="nav-link" href="">Ask a Question</a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" href="">Log Out</a>
+       </li>
+   {% else %}
+       <li class="nav-item">
+           <a class="nav-link" href="">Log In</a>
+       </li>
+       <li class="nav-item">
+           <a class="nav-link" href="">Sign Up</a>
+       </li>
+   {% endif %}
+</ul>
+</div>
+       </nav>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
 		<footer id="footer">

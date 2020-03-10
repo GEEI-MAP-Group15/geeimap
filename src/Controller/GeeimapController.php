@@ -16,6 +16,6 @@ class GeeimapController extends AbstractController
 
     public function first_page(){
     	//return new Response('test');
-    	return $this->render('geeimap/first_page.html.twig');
+    	return $this->render('geeimap/index.html.twig');
     }
 }
