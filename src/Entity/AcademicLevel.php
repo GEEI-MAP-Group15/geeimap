@@ -24,7 +24,7 @@ class AcademicLevel
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\AcademicData", mappedBy="academic_level", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\AcademicData", mappedBy="academiclevel", orphanRemoval=true)
      */
     private $academicdatas;
 

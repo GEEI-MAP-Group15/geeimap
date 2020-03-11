@@ -33,7 +33,7 @@ class AcademicData
      * @ORM\ManyToOne(targetEntity="App\Entity\AcademicLevel", inversedBy="academicdatas")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $academic_level;
+    private $academiclevel;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Student", mappedBy="academicdata", cascade={"persist", "remove"})
@@ -96,12 +96,12 @@ class AcademicData
 
     public function getAcademicLevel(): ?AcademicLevel
     {
-        return $this->academic_level;
+        return $this->academiclevel;
     }
 
-    public function setAcademicLevel(?AcademicLevel $academic_level): self
+    public function setAcademicLevel(?AcademicLevel $academiclevel): self
     {
-        $this->academic_level = $academic_level;
+        $this->academiclevel = $academiclevel;
 
         return $this;
     }
