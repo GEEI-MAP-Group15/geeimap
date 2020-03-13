@@ -24,6 +24,11 @@ class AcademicLevel
     private $name;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $capacity;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\AcademicData", mappedBy="academiclevel", orphanRemoval=true)
      */
     private $academicdatas;
@@ -77,6 +82,18 @@ class AcademicLevel
                 $academicdata->setAcademicLevel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCapacity(): ?int
+    {
+        return $this->capacity;
+    }
+
+    public function setCapacity(int $capacity): self
+    {
+        $this->capacity = $capacity;
 
         return $this;
     }

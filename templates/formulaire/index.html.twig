@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+   <div class="row">
+       <div class="col-6 offset-3">
+           <div class="card bg-light">
+               <div class="card-body">
+                   <h1 class="text-center">Information</h1>
+                   {{ form_start(studentForm) }}
+                       {{ form_row(studentForm.name) }}              
+                       {{ form_row(studentForm.firstname) }}
+                       {{ form_row(studentForm.date_of_birth) }}
+
+                       {{ form_row(studentForm.home_address) }}
+                       {{ form_row(studentForm.national_id_number) }}
+                       <button class="btn btn-primary btn-block">Continue</button>
+                   {{ form_end(studentForm) }}
+               </div>
+           </div>
+       </div>
+   </div>
+{% endblock %}
