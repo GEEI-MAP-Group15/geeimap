@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block title %}Hello ApplicantPageController!{% endblock %}
+{% block title %}Application{% endblock %}
 
 {% block body %}
-{% for application in applications %}
-  <div class="card mb-3">
+	<div class="card mb-3">
        <div class="card-body bg-light">
            <div class="row">
                <div class="col">
@@ -26,14 +25,4 @@
            </div>
        </div>
    </div>
-{% else %}
-   <div class="text-center alert alert-primary">No questions posted!</div>
-{% endfor %}
-
-  {#  This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp/www/Cranfield_group_project/GEEI-MAP/geeimap/src/Controller/ApplicantPageController.php'|file_link(0) }}">src/Controller/ApplicantPageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp/www/Cranfield_group_project/GEEI-MAP/geeimap/templates/applicant_page/index.html.twig'|file_link(0) }}">templates/applicant_page/index.html.twig</a></code></li>
-    </ul> #}
-</div>
 {% endblock %}
