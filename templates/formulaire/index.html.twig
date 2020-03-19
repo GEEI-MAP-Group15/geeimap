@@ -7,12 +7,7 @@
                <div class="card-body">
                    <h1 class="text-center">Information</h1>
                    {{ form_start(studentForm) }}
-                       {{ form_row(studentForm.name) }}              
-                       {{ form_row(studentForm.firstname) }}
-                       {{ form_row(studentForm.date_of_birth) }}
-
-                       {{ form_row(studentForm.home_address) }}
-                       {{ form_row(studentForm.national_id_number) }}
+                       {{ form_widget(studentForm) }}
                        <button class="btn btn-primary btn-block">Continue</button>
                    {{ form_end(studentForm) }}
                </div>

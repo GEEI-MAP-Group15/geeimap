@@ -24,10 +24,10 @@ class FormulaireController extends AbstractController
 	public function fillform(Request $request)
 	{
 		$student = new Student();
-		$form = $this->createForm(StudentType::class, $student);
-		$form->handleRequest($request);
+		$form_student = $this->createForm(StudentType::class, $student);
+		$form_student->handleRequest($request);
 
-		if($form->isSubmitted() && $form->isValid())
+		if($form_student->isSubmitted() && $form_student->isValid())
 		{
 			
 			$student->setUser($this->getUser());
@@ -35,13 +35,13 @@ class FormulaireController extends AbstractController
 			$student->setApplication(1);
 			$student->setBackground(1);
 			$entityManager = $this->getDoctrine()->getManager();
-			$entityManager->persist($student);
+			$entityManager->persist($student_form);
 			$entityManager->flush();
 			#return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
 		}
 
 		return $this->render('formulaire/index.html.twig', [
-			'studentForm' => $form->createView()
+			'studentForm' => $form_student->createView()
 		]);
 	}
 

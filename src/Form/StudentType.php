@@ -39,6 +39,8 @@ class StudentType extends AbstractType
             'label' => 'home_address'
             ])
             ->add('national_id_number')
+            ->add('background', BackgroundType::class)
+            ->add('academicdata', AcademicDataType::class)
             #->add('user')
             #->add('academicdata')
             #->add('application')
