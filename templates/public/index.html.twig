@@ -10,7 +10,9 @@
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
-
+    {% if app.user %}
+        <a href="{{ path('formulaire') }}" >cliquez ici pour accéder au formulaire</a>
+    {% endif %}
     Do you want to connect as :
     <ul>
 

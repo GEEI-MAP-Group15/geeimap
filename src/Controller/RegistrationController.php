@@ -22,7 +22,7 @@ class RegistrationController extends AbstractController
 
         if($this->isGranted("IS_AUTHENTICATED_FULLY"))
         {
-            return $this->redirectToRoute("homepage");
+            return $this->redirectToRoute("formulaire");
         }
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
