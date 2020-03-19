@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Student;
+use App\Entity\College;
+use App\Entity\AcademicData;
+use App\Entity\Application;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StudentType extends AbstractType
 {
@@ -39,8 +43,15 @@ class StudentType extends AbstractType
             'label' => 'home_address'
             ])
             ->add('national_id_number')
+            /*->add('college', EntityType::class, [
+                'class' => College::class,
+                'choice_label' => 'name',
+                'multiple' => false,
+                'required' => false
+            ])*/
             ->add('background', BackgroundType::class)
             ->add('academicdata', AcademicDataType::class)
+            ->add('application', ApplicationType::class)
             #->add('user')
             #->add('academicdata')
             #->add('application')

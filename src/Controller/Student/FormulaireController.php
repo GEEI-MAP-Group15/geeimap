@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Student;
 
 use App\Entity\Student;
 use App\Form\StudentType;
@@ -19,7 +19,7 @@ class FormulaireController extends AbstractController
     }
 
     /**
-     * @Route("/formulaire", name="formulaire")
+     * @Route("/student/formulaire", name="formulaire")
      */
 	public function fillform(Request $request)
 	{
@@ -31,12 +31,14 @@ class FormulaireController extends AbstractController
 		{
 			
 			$student->setUser($this->getUser());
-			$student->setAcademicData(1);
-			$student->setApplication(1);
-			$student->setBackground(1);
+
+			#$student->setAcademicData();
+			#$student->setApplication(1);
+			#$student->setBackground(1);
 			$entityManager = $this->getDoctrine()->getManager();
-			$entityManager->persist($student_form);
+			$entityManager->persist($student);
 			$entityManager->flush();
+			return $this->redirectToRoute('homepage');
 			#return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
 		}
 
