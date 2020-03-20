@@ -12,7 +12,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login/{abc}", name="app_login")
      */
-    public function login($abc, AuthenticationUtils $authenticationUtils): Response
+    public function login($abc=1, AuthenticationUtils $authenticationUtils): Response
     {
         
         if ($this->getUser()) {
