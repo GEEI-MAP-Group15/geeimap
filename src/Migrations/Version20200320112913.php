@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200311100227 extends AbstractMigration
+final class Version20200320112913 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -24,10 +24,10 @@ final class Version20200311100227 extends AbstractMigration
 
         $this->addSql('CREATE TABLE academic_data (id INT AUTO_INCREMENT NOT NULL, college_id INT NOT NULL, academiclevel_id INT NOT NULL, degree_id INT NOT NULL, INDEX IDX_312B6775770124B2 (college_id), INDEX IDX_312B6775AE77607C (academiclevel_id), INDEX IDX_312B6775B35C5756 (degree_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE academic_data_module (academic_data_id INT NOT NULL, module_id INT NOT NULL, INDEX IDX_A0308014B27B6B9A (academic_data_id), INDEX IDX_A0308014AFC2B591 (module_id), PRIMARY KEY(academic_data_id, module_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE academic_level (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE application (id INT AUTO_INCREMENT NOT NULL, staffuser_id INT DEFAULT NULL, status VARCHAR(255) NOT NULL, INDEX IDX_A45BDDC15B2086AD (staffuser_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE academic_level (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, capacity INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE application (id INT AUTO_INCREMENT NOT NULL, staffuser_id INT DEFAULT NULL, status INT DEFAULT 0 NOT NULL, INDEX IDX_A45BDDC15B2086AD (staffuser_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE background (id INT AUTO_INCREMENT NOT NULL, previous_university VARCHAR(255) NOT NULL, previous_city VARCHAR(255) NOT NULL, security_reason VARCHAR(255) NOT NULL, is_validated TINYINT(1) NOT NULL, period_type VARCHAR(255) NOT NULL, period_value INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE college (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE college (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, capacity INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE degree (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, capacity INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE degree_module (degree_id INT NOT NULL, module_id INT NOT NULL, INDEX IDX_1C184FADB35C5756 (degree_id), INDEX IDX_1C184FADAFC2B591 (module_id), PRIMARY KEY(degree_id, module_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE document (id INT AUTO_INCREMENT NOT NULL, student_id INT NOT NULL, name VARCHAR(255) NOT NULL, type VARCHAR(255) NOT NULL, INDEX IDX_D8698A76CB944F1A (student_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

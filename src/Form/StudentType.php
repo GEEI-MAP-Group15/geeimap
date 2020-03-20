@@ -6,6 +6,7 @@ use App\Entity\Student;
 use App\Entity\College;
 use App\Entity\AcademicData;
 use App\Entity\Application;
+use App\Entity\Document;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -52,6 +53,7 @@ class StudentType extends AbstractType
             ->add('background', BackgroundType::class)
             ->add('academicdata', AcademicDataType::class)
             ->add('application', ApplicationType::class)
+            #->add('documents', DocumentType::class)
             #->add('user')
             #->add('academicdata')
             #->add('application')

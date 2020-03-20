@@ -51,7 +51,7 @@ class Student
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="student", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="student", cascade={"persist", "remove"})
      */
     private $documents;
 

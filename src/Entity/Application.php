@@ -9,6 +9,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Application
 {
+    const STATUS = [
+        0 => 'Pending',
+        1 => 'Accepted',
+        2 => 'Rejected'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -22,7 +28,7 @@ class Application
     private $staffuser;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
     private $status;
 
@@ -58,6 +64,10 @@ class Application
         $this->status = $status;
 
         return $this;
+    }
+    public function getStatusType(): String
+    {
+        return self::STATUS[$this->status];
     }
 
     public function getStudent(): ?Student
