@@ -9,16 +9,11 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-    {% if app.user %}
-        <a href="{{ path('formulaire') }}" >cliquez ici pour accéder au formulaire</a>
-    {% endif %}
-    Do you want to connect as :
-    <ul>
-
-		
-        <li><a href="{{ path('login') }}" >Student</a></li>
-		<li><a href="{{ path('login') }}" >Admission</a></li>
+    <h1>Welcome on GEEIMAP website</h1>
+    <h5>Do you want to connect as :</h5>
+    <ul>	
+        <li><a href="{{ path('app_login', {'abc':'student'}) }}" >Student</a></li>
+		<li><a href="{{ path('app_login', {'abc':'admission'}) }}" >Admission</a></li>
     </ul>
 	
 </div>

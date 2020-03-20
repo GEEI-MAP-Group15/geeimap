@@ -10,10 +10,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/login/{abc}", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login($abc, AuthenticationUtils $authenticationUtils): Response
     {
+        
         if ($this->getUser()) {
             return $this->redirectToRoute('formulaire');
         }
@@ -22,8 +23,11 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('public/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        if ($abc == 'student'){
+            return $this->render('public/custom_login/login_student.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        } else {
+            return $this->render('public/custom_login/login_admission.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        }
     }
 
     /**
