@@ -23,7 +23,7 @@ class Application
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="application")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="applications")
      */
     private $staffuser;
 
