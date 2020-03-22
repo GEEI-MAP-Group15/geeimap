@@ -48,11 +48,11 @@ class StudentType extends AbstractType
             ],
                 'label' => 'Home Address',
                 'help' => 'Write your address',
-                'attr' => ['placeholder' => '100 Bethune Street, 62232 Hinges'],
+                'attr' => ['placeholder' => '158 Bethune Street, 62232 Hinges'],
             ])
             ->add('national_id_number', IntegerType::class, [
-                'label' => 'Give your national ID number',
-                'help' => 'Write your name',
+                'label' => 'National ID number',
+                'help' => 'Give your national ID number',
                 'attr' => ['placeholder' => '0123456'],
             ])
             /*->add('college', EntityType::class, [
