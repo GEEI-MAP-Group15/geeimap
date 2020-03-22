@@ -26,8 +26,13 @@ class Background
      */
     private $previous_city;
 
+
+    const SECURITY_REASON = [
+        0 => 'Reason 1',
+        1 => 'Resaon 2'
+    ];
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
     private $security_reason;
 
@@ -36,8 +41,13 @@ class Background
      */
     private $is_validated;
 
+
+    const PERIOD_TYPE = [
+        0 => 'Semester',
+        1 => 'Year'
+    ];
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
     private $period_type;
 
@@ -92,6 +102,11 @@ class Background
         return $this;
     }
 
+    public function getSecurityReasonType(): String
+    {
+        return self::SECURITY_REASON[$this->security_reason];
+    }
+
     public function getIsValidated(): ?bool
     {
         return $this->is_validated;
@@ -114,6 +129,10 @@ class Background
         $this->period_type = $period_type;
 
         return $this;
+    }
+    public function getPeriodTypeType(): String
+    {
+        return self::PERIOD_TYPE[$this->period_type];
     }
 
     public function getPeriodValue(): ?int

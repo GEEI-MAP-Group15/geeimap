@@ -22,21 +22,27 @@ class AcademicDataType extends AbstractType
                 'class' => College::class,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'College',
+                'help' => 'Chose your college',
             ])
             #->add('modules')
             ->add('modules', EntityType::class, [
                 'class' => Module::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'required' => false
+                'required' => false,
+                'label' => 'Modules',
+                'help' => 'Chose your modules',
             ])
             #->add('academiclevel')
             ->add('academiclevel', EntityType::class, [
                 'class' => AcademicLevel::class,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Academic Level',
+                'help' => 'Chose your academic level',
             ])
             #->add('student')
             #->add('degree')
@@ -44,7 +50,9 @@ class AcademicDataType extends AbstractType
                 'class' => Degree::class,
                 'choice_label' => 'name',
                 'multiple' => false,
-                'required' => false
+                'required' => false,
+                'label' => 'Degree',
+                'help' => 'Chose your degree',
             ])
         ;
     }

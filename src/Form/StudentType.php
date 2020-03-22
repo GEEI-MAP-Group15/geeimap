@@ -13,6 +13,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -24,12 +25,16 @@ class StudentType extends AbstractType
             ->add('name', TextType::class, [
                 'constraints' => [new NotBlank(['message' => 'Your name may not be blank'])
             ],
-            'label' => 'Name'
+            'label' => 'Name',
+            'help' => 'Write your name',
+            'attr' => ['placeholder' => 'Pabich'],
             ])
             ->add('firstname', TextType::class, [
                 'constraints' => [new NotBlank(['message' => 'Your firstname may not be blank'])
             ],
-            'label' => 'Firstname'
+            'label' => 'Firstname',
+            'help' => 'Write your Firstname',
+            'attr' => ['placeholder' => 'Florian'],
             ])
             ->add('date_of_birth', DateType::class, [
                 'placeholder' => [
@@ -41,9 +46,15 @@ class StudentType extends AbstractType
             ->add('home_address', TextareaType::class, [
                 'constraints' => [new NotBlank(['message' => 'Your home address may not be blank'])
             ],
-            'label' => 'home_address'
+                'label' => 'Home Address',
+                'help' => 'Write your address',
+                'attr' => ['placeholder' => '100 Bethune Street, 62232 Hinges'],
             ])
-            ->add('national_id_number')
+            ->add('national_id_number', IntegerType::class, [
+                'label' => 'Give your national ID number',
+                'help' => 'Write your name',
+                'attr' => ['placeholder' => '0123456'],
+            ])
             /*->add('college', EntityType::class, [
                 'class' => College::class,
                 'choice_label' => 'name',
@@ -52,7 +63,9 @@ class StudentType extends AbstractType
             ])*/
             ->add('background', BackgroundType::class)
             ->add('academicdata', AcademicDataType::class)
-            ->add('application', ApplicationType::class)
+            ->add('application', ApplicationType::class, [
+                'disabled' => true
+            ])
             #->add('documents', DocumentType::class)
             #->add('user')
             #->add('academicdata')
