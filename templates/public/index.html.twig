@@ -11,10 +11,11 @@
 <div class="example-wrapper">
     <h1>Welcome on GEEIMAP website</h1>
     <h5>Do you want to connect as :</h5>
-    <ul>	
-        <li><a href="{{ path('app_login', {'abc':'student'}) }}" >Student</a></li>
-		<li><a href="{{ path('app_login', {'abc':'admission'}) }}" >Admission</a></li>
-    </ul>
+    <div class="container col-6 offset-3 mt-3">
+    		
+        <a href="{{ path('app_login', {'abc':'student'}) }}" role="button" class="btn btn-outline-primary btn-lg btn-block">Student</a>
+		<a href="{{ path('app_login', {'abc':'admission'}) }}" role="button" class="btn btn-outline-dark btn-lg btn-block">Admission</a>
+    	</div>	
 	
 </div>
 
