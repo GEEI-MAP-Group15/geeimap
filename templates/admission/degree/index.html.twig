@@ -3,15 +3,24 @@
 {% block title %}Degree index{% endblock %}
 
 {% block body %}
-    <h1>Degree index</h1>
+    <div class="container mt-4">
+        
+    <h1>Manage Degrees</h1>
+    <a href="{{ path('degree_new') }}" class="btn btn-secondary">Create new degree</a>
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-    <table class="table">
-        <thead>
+    <table class="table table-hover table-bordered table-sm">
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Capacity</th>
-                <th>actions</th>
+                <th>Modules</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -22,12 +31,18 @@
                 <td>{{ degree.capacity }}</td>
                 <td><ul class="list-group">
                     {% for module in degree.modules %}
-                    <li class="list-group-item">{{ module.name }}</li>
-                {% endfor %}
-                </ul></td>
+                        <li class="list-group-item">{{ module.name }}</li>
+                    {% endfor %}
+                </ul>
+                </td>
                 <td>
-                    <a href="{{ path('degree_show', {'id': degree.id}) }}">show</a>
-                    <a href="{{ path('degree_edit', {'id': degree.id}) }}">edit</a>
+                    {#<a href="{{ path('degree_show', {'id': degree.id}) }}" class="btn btn-secondary">show</a>#}
+                    <a href="{{ path('degree_edit', {'id': degree.id}) }}" class="btn btn-secondary">Edit</a>
+                    <form method="post" action="{{ path('degree_delete', {id: degree.id}) }}" style="display: inline-block">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete'~degree.id) }}">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +53,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('degree_new') }}">Create new</a>
+    
+    </div>
 {% endblock %}

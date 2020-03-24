@@ -59,7 +59,7 @@ class Application
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(int $status): self
     {
         $this->status = $status;
 
