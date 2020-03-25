@@ -1,13 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit AcademicLevel{% endblock %}
+{% block title %}Edit {{ academic_level.name }} AcademicLevel{% endblock %}
 
 {% block body %}
-    <h1>Edit AcademicLevel</h1>
 
-    {{ include('admission/academic_level/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container">
 
-    <a href="{{ path('academic_level_index') }}">back to list</a>
+		<br></br>
 
-    {{ include('admission/academic_level/_delete_form.html.twig') }}
+		<div class="row">
+
+
+			<h1 class="col-lg-12 text-center">Edit {{ academic_level.name }} Academic Level</h1>
+
+		</div>
+
+			<br></br>
+
+		<div class="row">
+
+
+			<div class="col-lg-12">
+
+				<a role="button">{{ include('admission/academic_level/_form.html.twig', {'button_label': 'Update'}) }}</a>
+
+			</div>
+
+		</div>
+
+		
+
+		<div class="row">
+
+			<div class="btn-group d-flex col-lg-12" role="group">
+
+				<a href="{{ path('academic_level_index') }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:50%;">Back To Academic Level List</a>
+
+    			<a role="button" style="width:50%;">{{ include('admission/academic_level/_delete_form.html.twig') }}</a>
+
+			</div>
+
+    			
+		</div>
+		
+
+
+	</div>
+
+    
 {% endblock %}
