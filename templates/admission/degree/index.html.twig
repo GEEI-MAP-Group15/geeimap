@@ -1,9 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Degree List{% endblock %}
+{% block title %}Degree index{% endblock %}
 
 {% block body %}
-<<<<<<< HEAD
     <div class="container mt-4">
         
     <h1>Manage Degrees</h1>
@@ -56,69 +55,4 @@
 
     
     </div>
-=======
-
-
-    <div class="container">
-
-        <br></br>    
-
-        <div class="row">
-
-            <h1 class="col-lg-12 text-center">Degree List</h1>
-
-        </div>
-
-        <br></br>
-
-        <div class="row">
-
-            <table class="col-lg-12 table-center table-bordered table-striped">
-            
-                <thead class="thead-light">
-                    <tr>
-                        {#<th>Id</th>#}
-                        <th>Name</th>
-                        <th>Capacity</th>
-                        <th>actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for degree in degrees %}
-                    <tr>
-                        {#<td>{{ degree.id }}</td>#}
-                        <td>{{ degree.name }}
-
-                            <ul class="list-group">
-                            {% for module in degree.modules %}
-                            <li class="list-group-item">{{ module.name }}</li>
-                            {% endfor %}
-                            </ul>
-
-                        </td>
-                        <td>{{ degree.capacity }}</td>
-                        <td>
-                            <a href="{{ path('degree_show', {'id': degree.id}) }}">show</a>
-                            <a href="{{ path('degree_edit', {'id': degree.id}) }}">edit</a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="4">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-        </div>
-
-    
-
-    <a href="{{ path('degree_new') }}">Create new</a>
-
-
-    </div>
-
-    
->>>>>>> paul2
 {% endblock %}

@@ -1,44 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create new Academic Level{% endblock %}
+{% block title %}New AcademicLevel{% endblock %}
 
 {% block body %}
+    <h1>Create new AcademicLevel</h1>
 
-	<div class="container">
+    {{ include('admission/academic_level/_form.html.twig') }}
 
-		<br></br>
-
-		<div class="row">
-
-			<h1 class="col-lg-12 text-center">Create new Academic Level</h1>
-
-		</div>
-
-		<br></br>
-
-		<div class="row">
-
-			<div class="col-lg-12">
-
-				{{ include('admission/academic_level/_form.html.twig') }}
-
-			</div>
-
-		</div> 
-
-	
-
-		<div class="row">
-
-			<div class="btn-group d-flex col-lg-4" role="group">
-
-				<a href="{{ path('academic_level_index') }}" class="btn btn-default btn-outline-secondary btn-sm" role="button">Back to Academic Level List</a>
-
-			</div>
-
-		</div>	  	
-
-	</div>
-
-    
+    <a href="{{ path('academic_level_index') }}">back to list</a>
 {% endblock %}
