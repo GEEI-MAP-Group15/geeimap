@@ -4,6 +4,7 @@ namespace App\Security;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Controller\SecurityController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -96,6 +97,13 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
         #throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        $roles = $token->getRoles();
+        $rolesTab = array_map(function($role){ 
+          return $role->getRole(); 
+        }, $roles);
+        if (in_array("ROLE_ADMIN", $rolesTab, true)){
+            return new RedirectResponse($this->urlGenerator->generate('admission'));
+        }
         return new RedirectResponse($this->urlGenerator->generate('formulaire'));
     }
 
