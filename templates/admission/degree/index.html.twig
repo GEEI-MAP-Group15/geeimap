@@ -22,30 +22,57 @@
             <table class="col-lg-12 table-center table-bordered table-striped">
             
                 <thead class="thead-light">
-                    <tr>
+                    <tr class="text-center">
                         {#<th>Id</th>#}
-                        <th>Name</th>
-                        <th>Capacity</th>
-                        <th>actions</th>
+                        <th>Name of Degree</th>
+                        <th>Modules in Degree</th>
+                        <th>Capacity in Degree</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for degree in degrees %}
                     <tr>
                         {#<td>{{ degree.id }}</td>#}
-                        <td>{{ degree.name }}
+                        <td style="width:25%;">
 
-                            <ul class="list-group">
-                            {% for module in degree.modules %}
-                            <li class="list-group-item">{{ module.name }}</li>
-                            {% endfor %}
-                            </ul>
+                            <div class="">
+
+                                {{ degree.name }}
+
+                            </div>
 
                         </td>
-                        <td>{{ degree.capacity }}</td>
-                        <td>
-                            <a href="{{ path('degree_show', {'id': degree.id}) }}">show</a>
-                            <a href="{{ path('degree_edit', {'id': degree.id}) }}">edit</a>
+                        <td style="width:35%;">
+
+                            <div class="dropdown">
+
+                                <button class="btn btn-default text-dark dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">Modules of {{ degree.name }}<span class="caret"></button>
+                                <ul class="dropdown-menu" role="menu" style="width:100%;">
+
+                                    {% for module in degree.modules %}
+                                    <li class="list-group-item">{{ module.name }}</li>
+                                    {% endfor %}
+
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a class="btn btn-default btn-outline-primary btn-sm" role="button" style="width:100%;" role="menuitem" href="{{ path('degree_edit', {'id': degree.id}) }}">Edit Modules in Degree</a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </td>
+                        <td class="text-center" style="width:10%;">{{ degree.capacity }}</td>
+
+                        <td align="center" style="width:30%;">
+
+                            <div class="col-lg-12 btn-group d-flex" role="group">
+
+                                <a href="{{ path('degree_show', {'id': degree.id}) }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:33%;">Show</a>
+                                <a href="{{ path('degree_edit', {'id': degree.id}) }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:33%;">Edit</a>
+                                <a role="button" style="width:33%;">{{ include('admission/degree/_delete_form.html.twig') }}</a>
+
+                            </div>
                         </td>
                     </tr>
                 {% else %}
@@ -56,12 +83,18 @@
                 </tbody>
             </table>
 
+
+           
+
         </div>
 
-    
+         <br></br>
 
-    <a href="{{ path('degree_new') }}">Create new</a>
+        <div class="row">
 
+            <a href="{{ path('degree_new') }}" class="btn-primary btn-block text-center text-dark btn-outline-default">Create new Degree</a>
+
+        </div>
 
     </div>
 

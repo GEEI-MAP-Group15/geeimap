@@ -1,13 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Degree{% endblock %}
+{% block title %}Edit {{ degree.name }} Degree{% endblock %}
 
 {% block body %}
-    <h1>Edit Degree</h1>
 
-    {{ include('admission/degree/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container">
 
-    <a href="{{ path('degree_index') }}">back to list</a>
+		<br></br>
 
-    {{ include('admission/degree/_delete_form.html.twig') }}
+		<div class="row">
+
+			<h1 class="col-lg-12 text-center">Edit {{ degree.name }} Degree</h1>
+
+		</div>
+
+		<br></br>
+
+		<div class="row">
+
+			<div class="col-lg-12">
+
+				<a role="button">{{ include('admission/degree/_form.html.twig', {'button_label': 'Update'}) }}</a>
+				<a href="{{ path('module_new') }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:100%;">Add new Modules in the list</a>
+
+			</div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="btn-group d-flex col-lg-12" role="group">
+
+				<a href="{{ path('degree_index') }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:50%;">Back to Degree List</a>
+    			<a role="button" style="width:50%;">{{ include('admission/degree/_delete_form.html.twig') }}</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
 {% endblock %}
