@@ -14,11 +14,3 @@ login:
 register:
   path: /register
   controller: App\Controller\SecurityController::register
-
-applicant_page_show:
-  path: /applicant/page/{id}
-  controller: App\Controller\ApplicantPageController::show
-
-formulaire:
-  path: /student/formulaire
-  controller: App\Controller\Student\FormulaireController::fillform
