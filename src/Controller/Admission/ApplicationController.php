@@ -63,18 +63,18 @@ class ApplicationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="application_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Module $module): Response
+    public function edit(Request $request, Application $application): Response
     {
-        $form = $this->createForm(ModuleType::class, $module);
+        $form = $this->createForm(StudentType::class, $module);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('module_index');
+            return $this->redirectToRoute('application_index');
         }
 
-        return $this->render('admission/module/edit.html.twig', [
+        return $this->render('admission/application/edit.html.twig', [
             'module' => $module,
             'form' => $form->createView(),
         ]);

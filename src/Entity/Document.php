@@ -6,9 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
+ * @Vich\Uploadable()
  */
 class Document
 {
@@ -22,7 +26,14 @@ class Document
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $filename;
+
+
+    /**
+     * @Vich\UploadableField(mapping="document_images", fileNameProperty="filename")
+     * @var File|null
+     **/
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -30,26 +41,60 @@ class Document
     private $type;
 
     /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
+
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Student", inversedBy="documents")
      * @ORM\JoinColumn(nullable=false)
      */
     private $student;
+
+
+    public function __construct()
+    {
+        $this->documents = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getFilename(): ?string
     {
-        return $this->name;
+        return $this->filename;
     }
 
-    public function setName(string $name): self
+    public function setFilename(string $filename): self
     {
-        $this->name = $name;
+        $this->filename = $filename;
 
-        return $this;
+        #return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(File $imageFile): Property
+    {
+        $this->imageFile = $imageFile;
+        /* if ($this->imageFile instanceof UploadedFile) {
+            $this->updated_at = new \DateTime('now');
+        } */
+        #return $this;
+        if ($imageFile) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 
     public function getType(): ?string

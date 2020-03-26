@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class StudentType extends AbstractType
 {
@@ -67,6 +68,16 @@ class StudentType extends AbstractType
                 'disabled' => true
             ])
             #->add('documents', DocumentType::class)
+            /*->add('documents', DocumentType::class, [
+                #'class' => Document::class,
+                #'choice_label' => 'imageFile',
+            ])*/
+
+            ->add('documents', EntityType::class, [
+                'class' => Document::class,
+                #'entry_type' => DocumentType::class,
+                #'allow_add'    => true,
+            ])
             #->add('user')
             #->add('academicdata')
             #->add('application')
