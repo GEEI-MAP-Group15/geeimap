@@ -64,20 +64,21 @@ class StudentType extends AbstractType
             ])*/
             ->add('background', BackgroundType::class)
             ->add('academicdata', AcademicDataType::class)
-            ->add('application', ApplicationType::class, [
-                'disabled' => true
-            ])
+            ->add('application', ApplicationType::class)
             #->add('documents', DocumentType::class)
             /*->add('documents', DocumentType::class, [
                 #'class' => Document::class,
                 #'choice_label' => 'imageFile',
             ])*/
 
-            ->add('documents', EntityType::class, [
+            /**->add('documents', CollectionType::class, [
                 'class' => Document::class,
+                'type' => new DocumentType(),
+                'allow_add' => true,
+                'allow_delete' => true,
+                'label' => false,
                 #'entry_type' => DocumentType::class,
-                #'allow_add'    => true,
-            ])
+            ])**/
             #->add('user')
             #->add('academicdata')
             #->add('application')

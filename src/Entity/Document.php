@@ -76,7 +76,7 @@ class Document
     {
         $this->filename = $filename;
 
-        #return $this;
+        return $this;
     }
 
     public function getImageFile(): ?File
@@ -84,17 +84,13 @@ class Document
         return $this->imageFile;
     }
 
-    public function setImageFile(File $imageFile): Property
+    public function setImageFile(File $imageFile)
     {
         $this->imageFile = $imageFile;
-        /* if ($this->imageFile instanceof UploadedFile) {
+        if ($this->imageFile instanceof UploadedFile) {
             $this->updated_at = new \DateTime('now');
-        } */
-        #return $this;
-        if ($imageFile) {
-            // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
         }
+        return $this;
     }
 
     public function getType(): ?string
@@ -117,6 +113,18 @@ class Document
     public function setStudent(?Student $student): self
     {
         $this->student = $student;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    {
+        $this->updated_at = $updated_at;
 
         return $this;
     }

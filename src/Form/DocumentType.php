@@ -16,11 +16,11 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageFile', VichImageType::class, [
-                'download_uri' => true,
+            /*->add('imageFile', VichImageType::class, [
                 'label' => 'update',
-                'multiple' => true,
-            ])
+                'asset_helper' => true,
+            ])*/
+            ->add('imageFile', FileType::class)
             ->add('type', TextType::class)
             #->add('student')
         ;

@@ -4,7 +4,7 @@ vich_uploader:
       document_images:
         uri_prefix: /images/documents
         upload_destination: '%kernel.project_dir%/public/images/documents'
-        #namer: Vich\UploaderBundle\Naming\UniqidNamer
+        namer: Vich\UploaderBundle\Naming\UniqidNamer
         inject_on_load: false
         delete_on_update: true
         delete_on_remove: true

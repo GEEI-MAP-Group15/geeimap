@@ -16,10 +16,17 @@ class BackgroundType extends AbstractType
     {
         $builder
             ->add('previous_university',TextType::class , [
+                
                 'label' => 'Previous University',
+                'label_attr' => [
+                    'class' => ''
+                ],
                 'help' => 'Write the name of your previous university',
-                'attr' => ['placeholder' => 'Baghdad University'],
-        ])
+                'attr' => [
+                    'placeholder' => 'Baghdad University',
+                    'class' => '',
+                ],
+            ])
             ->add('previous_city', TextType::class, [
                 'label' => 'Previous City',
                 'help' => 'Write your previous city',
