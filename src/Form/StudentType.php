@@ -25,16 +25,16 @@ class StudentType extends AbstractType
             ->add('name', TextType::class, [
                 'constraints' => [new NotBlank(['message' => 'Your name may not be blank'])
             ],
-            'label' => 'Name',
-            'help' => 'Write your name',
-            'attr' => ['placeholder' => 'Pabich'],
+            'label' => 'Last Name',
+            /*'help' => 'Write your name',*/
+            /*'attr' => ['placeholder' => 'Pabich','class'=>''],*/
             ])
             ->add('firstname', TextType::class, [
                 'constraints' => [new NotBlank(['message' => 'Your firstname may not be blank'])
             ],
-            'label' => 'Firstname',
-            'help' => 'Write your Firstname',
-            'attr' => ['placeholder' => 'Florian'],
+            'label' => 'First Name',
+            /*'help' => 'Write your Firstname',*/
+            /*'attr' => ['placeholder' => 'Florian'],*/
             ])
             ->add('date_of_birth', DateType::class, [
                 'placeholder' => [
@@ -47,12 +47,12 @@ class StudentType extends AbstractType
                 'constraints' => [new NotBlank(['message' => 'Your home address may not be blank'])
             ],
                 'label' => 'Home Address',
-                'help' => 'Write your address',
-                'attr' => ['placeholder' => '158 Bethune Street, 62232 Hinges'],
+                /*'help' => 'Write your address',*/
+                'attr' => ['placeholder' => 'الجادرية، Baghdad, Irak'],
             ])
             ->add('national_id_number', IntegerType::class, [
                 'label' => 'National ID number',
-                'help' => 'Give your national ID number',
+                'help' => 'Enter your national ID number (which is given on your student card',
                 'attr' => ['placeholder' => '0123456'],
             ])
             /*->add('college', EntityType::class, [
@@ -61,11 +61,10 @@ class StudentType extends AbstractType
                 'multiple' => false,
                 'required' => false
             ])*/
+
             ->add('background', BackgroundType::class)
             ->add('academicdata', AcademicDataType::class)
-            ->add('application', ApplicationType::class, [
-                'disabled' => true
-            ])
+            ->add('application', ApplicationType::class)
             #->add('documents', DocumentType::class)
             #->add('user')
             #->add('academicdata')

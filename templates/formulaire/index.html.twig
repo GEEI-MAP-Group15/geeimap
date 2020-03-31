@@ -5,11 +5,17 @@
        <div class="col-6 offset-3">
            <div class="card bg-light">
                <div class="card-body">
-                   <h1 class="text-center">Information</h1>
-                   {{ form_start(studentForm) }}
-                       {{ form_widget(studentForm) }}
-                       <button class="btn btn-primary btn-block">Continue</button>
-                   {{ form_end(studentForm) }}
+                   <h1 class="text-center">Student Information</h1>
+                    <br></br>
+
+                    <h6>Personal Information</h6> 
+                    {{ form_start(studentForm) }}
+                      {{ form_widget(studentForm) }}
+                      <button class="btn btn-primary btn-block">Continue</button>
+                    {{ form_end(studentForm) }}
+
+
+                                     
                </div>
            </div>
        </div>

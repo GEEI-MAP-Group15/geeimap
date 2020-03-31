@@ -17,7 +17,7 @@ class BackgroundType extends AbstractType
         $builder
             ->add('previous_university',TextType::class , [
                 'label' => 'Previous University',
-                'help' => 'Write the name of your previous university',
+                'help' => 'Write the name of your previous university (in troubled area)',
                 'attr' => ['placeholder' => 'Baghdad University'],
         ])
             ->add('previous_city', TextType::class, [
@@ -27,15 +27,17 @@ class BackgroundType extends AbstractType
             ])
             ->add('security_reason', ChoiceType::class, [
                 #'choices' => Property::HEAT
-                'choices' => $this->getChoices()
+                'choices' => $this->getChoices(),
+                'help' => 'Choose the closest reason of your move to Baghdad University',
             ])
             ->add('is_validated', CheckboxType::class, [
                 'label' => 'Previous year validated ?',
-                'help' => 'Tick if you validated your previous year',
+                'help' => 'Tick if you validated your previous year/semester in troubled University',
             ])
             ->add('period_type', ChoiceType::class, [
                 #'choices' => Property::HEAT
-                'choices' => $this->getChoices2()
+                'choices' => $this->getChoices2(),
+                'help' => 'Choose the period type of validation of your studies in your previous University',
             ])
             ->add('period_value')
             #->add('student')
