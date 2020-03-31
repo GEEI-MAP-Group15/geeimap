@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Degree index{% endblock %}
+
+    {% block body %}
+
+
+    	<div class="container">
+
+    		<br></br>
+
+    		<div class="row">
+
+
+    			<h1 class="col-lg-12 text-center">Edit {{application.student.name}} {{application.student.firstname}} Application</h1>
+
+
+    		</div>
+
+    		<br></br>
+
+			<div class="row">
+
+				<table class="col-lg-12 table-center table-bordered table-striped">
+
+                	<thead class="thead-light text-center">
+
+	                    <tr>
+	                        <th>Data</th>
+	                        <th>Student Information</th>
+	                        
+	                    </tr>
+
+                	</thead>
+
+                	<tbody class="text-center">
+
+                		<tr>
+                			<td>Last Name</td>
+                			<td>{{application.student.name}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>First Name</td>
+                			<td>{{application.student.firstname}}</td>
+                		</tr>	
+
+                		<tr>
+                			<td>Date of Birth</td>
+                			<td></td>
+                		</tr>
+
+                		<tr>
+                			<td>Home Address</td>
+                			<td>{{application.student.homeaddress}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>National ID Number</td>
+                			<td>{{application.student.nationalidnumber}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Previous University</td>
+                			<td>{{application.student.background.previousuniversity}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Security Reason</td>
+                			<td>{{application.student.background.securityreason}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Previous year validated?</td>
+                			<td>{{application.student.background.isvalidated}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Period type</td>
+                			<td>{{application.student.background.periodtype}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Period Value</td>
+                			<td>{{application.student.background.periodvalue}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>College</td>
+                			<td>{{application.student.academicdata.college.name}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Modules</td>
+                			<td>
+
+                				<div class="dropdown">
+
+                                    <button class="btn btn-default text-dark dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">View Applicant modules<span class="caret"></button>
+
+                                    <ul class="dropdown-menu" role="menu" style="width:100%;"{#class="list-group"#}>
+                                        {% for module in application.student.academicdata.modules %}
+                                            <li class="list-group-item">{{ module.name }}</li>
+                                        {% endfor %}
+                                     </ul>
+
+                                </div>
+
+                			</td>
+                		</tr>
+
+                		<tr>
+                			<td>Academic Level</td>
+                			<td>{{application.student.academicdata.academiclevel.name}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Degree</td>
+                			<td>{{application.student.academicdata.degree.name}}</td>
+                		</tr>
+
+                	</tbody>
+
+                </table>	
+
+			</div>
+
+			<br></br>
+
+			<div class="row">
+
+				{#<div class="dropdown">
+
+					<button class="btn btn-default text-dark dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">Select Status</button>
+
+					<ul class="dropdown-menu" role="menu" style="width:100%;">
+						<li class="list-group-item">Pending</li>
+						<li class="list-group-item">Accepted</li>
+						<li class="list-group-item">Rejected</li>
+					</ul>
+
+				</div>#}
+
+				<div class="input-group">
+					<div class="input-group-prepend">
+						<select id="Status" name="Status" class="form-control">
+							<option selected="selected" value="Accepted">Accepted</option>
+							<option selected="selected" value="Rejected">Rejected</option>
+							<option selected="selected" value="Pending">Pending</option>
+						</select>
+					</div>
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="submit">Validate Status</button>
+					</div>
+				</div>
+
+				{#<button class="btn-primary" type="submit">Validate status</button>#}
+
+			</div>
+
+			<div class="row">
+
+				<div class="btn-group d-flex col-lg-12" role="group">
+
+					<a href="{{ path('application_index') }}" class="btn btn-secondary btn-outline-default btn-sm" role="button" style="width:50%;">Back To Application List</a>
+
+				</div>
+
+			</div>
+
+			<br></br>
+
+
+    	</div>
+
+
+
+
+    {% endblock %}
