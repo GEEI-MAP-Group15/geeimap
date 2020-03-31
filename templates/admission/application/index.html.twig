@@ -5,7 +5,7 @@
     {% block body %}
         <div class="container mt-4">
 
-            <h1>Manage Applications</h1>
+            <h1 class="text-center">Manage Applications</h1>
             {#<a href="{{ path('application_new') }}" class="btn btn-secondary">Create new degree</a>#}
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
@@ -13,12 +13,16 @@
                 </div>
             {% endfor %}
 
+            <br></br>
+
             <table class="table table-hover table-bordered table-sm">
                 <thead class="thead-dark">
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
-                        <th>Capacity</th>
+                        <th>Status</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>E-mail</th>
                         <th>Modules</th>
                         <th>Action</th>
                     </tr>
@@ -31,21 +35,29 @@
                             <td>{{ application.student.name }}</td>
                             <td>{{ application.student.firstname }}</td>
                             <td>{{ application.student.user.email }}</td>
-                            {#<td><ul class="list-group">
-                                {% for module in degree.modules %}
-                                    <li class="list-group-item">{{ module.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>#}
-                        <td>
-                            {#<a href="{{ path('degree_show', {'id': degree.id}) }}" class="btn btn-secondary">show</a>#}
-                            <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-secondary">Edit</a>
-                            <form method="post" action="{{ path('application_delete', {id: application.id}) }}" style="display: inline-block">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token('delete'~application.id) }}">
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
+                            <td>
+
+                                <div class="dropdown">
+
+                                    <button class="btn btn-default text-dark dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">View Applicant modules<span class="caret"></button>
+
+                                    <ul class="dropdown-menu" role="menu" style="width:100%;"{#class="list-group"#}>
+                                        {% for module in application.student.academicdata.modules %}
+                                            <li class="list-group-item">{{ module.name }}</li>
+                                        {% endfor %}
+                                     </ul>
+
+                                </div>
+                            </td>
+                            <td>
+                                {#<a href="{{ path('degree_show', {'id': degree.id}) }}" class="btn btn-secondary">show</a>#}
+                                <a href="{{ path('application_edit', {'id': application.id}) }}" class="btn btn-secondary">Edit</a>
+                                <form method="post" action="{{ path('application_delete', {id: application.id}) }}" style="display: inline-block">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete'~application.id) }}">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                     </tr>
                 {% else %}
                     <tr>
