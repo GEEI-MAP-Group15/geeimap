@@ -21,6 +21,8 @@
                         <th>Capacity</th>
                         <th>Modules</th>
                         <th>Action</th>
+                        <th>Action</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +33,12 @@
                             <td>{{ application.student.name }}</td>
                             <td>{{ application.student.firstname }}</td>
                             <td>{{ application.student.user.email }}</td>
+                            <td><ul class="list-group">
+                            {% for module in application.student.academicdata.modules %}
+                                <li class='list-group-item'>{{ module.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        </td>
                             {#<td><ul class="list-group">
                                 {% for module in degree.modules %}
                                     <li class="list-group-item">{{ module.name }}</li>
