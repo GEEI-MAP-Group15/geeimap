@@ -42,7 +42,7 @@ class FormulaireController extends AbstractController
 			#return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
 		}
 
-		return $this->render('formulaire/index.html.twig', [
+		return $this->render('student/formulaire/index.html.twig', [
 			'studentForm' => $form_student->createView()
 		]);
 	}
