@@ -4,6 +4,7 @@ namespace App\Controller\Admission;
 
 use App\Entity\Module;
 use App\Entity\Application;
+use App\Entity\Student;
 use App\Form\ModuleType;
 use App\Form\ApplicationType;
 use App\Repository\ModuleRepository;
@@ -54,10 +55,10 @@ class ApplicationController extends AbstractController
     /**
      * @Route("/{id}", name="application_show", methods={"GET"})
      */
-    public function show(Module $module): Response
+    public function show(Application $application): Response
     {
         return $this->render('admission/application/show.html.twig', [
-            'module' => $module,
+            'application' => $application,
         ]);
     }
 
@@ -87,14 +88,14 @@ class ApplicationController extends AbstractController
     /**
      * @Route("/{id}", name="application_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Module $module): Response
+    public function delete(Request $request, Application $application): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$module->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$application->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($module);
+            $entityManager->remove($application);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('module_index');
+        return $this->redirectToRoute('application_index');
     }
 }

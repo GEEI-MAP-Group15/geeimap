@@ -128,44 +128,24 @@
 
 			<br></br>
 
-			<div class="row">
+			<div class="row" align="center">
 
-				{#<div class="dropdown">
+					<div class="btn-group d-flex col-lg-12" role="group">
 
-					<button class="btn btn-default text-dark dropdown-toggle" type="button" data-toggle="dropdown" style="width:100%;">Select Status</button>
+						<button type="button" class="btn btn-primary btn-outline-default btn-sm btn-block" align="center">{{ include('admission/application/_form.html.twig', {'button_label': 'Update'}) }}</button>
+						<p class="col-lg-12 text-center">Click on Update after selecting the status</p>
 
-					<ul class="dropdown-menu" role="menu" style="width:100%;">
-						<li class="list-group-item">Pending</li>
-						<li class="list-group-item">Accepted</li>
-						<li class="list-group-item">Rejected</li>
-					</ul>
-
-				</div>#}
-
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<select id="Status" name="Status" class="form-control">
-							<option selected="selected" value="Accepted">Accepted</option>
-							<option selected="selected" value="Rejected">Rejected</option>
-							<option selected="selected" value="Pending">Pending</option>
-						</select>
 					</div>
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="submit">Validate Status</button>
-					</div>
-				</div>
-
-				{#<button class="btn-primary" type="submit">Validate status</button>#}
 
 			</div>
 
 			<div class="row">
 
-				<div class="btn-group d-flex col-lg-12" role="group">
+				{#<div class="btn-group col-lg-12" role="group">#}
 
-					<a href="{{ path('application_index') }}" class="btn btn-secondary btn-outline-default btn-sm" role="button" style="width:50%;">Back To Application List</a>
+					<a href="{{ path('application_index') }}" class="btn btn-secondary btn-outline-default btn-sm btn-block" type="button">Back To Application List</a>
 
-				</div>
+				{#</div>#}
 
 			</div>
 
