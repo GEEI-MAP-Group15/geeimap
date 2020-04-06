@@ -19,6 +19,13 @@ class BackgroundRepository extends ServiceEntityRepository
         parent::__construct($registry, Background::class);
     }
 
+    public function findCity()
+    {
+        return $this->createQueryBuilder('b')
+        ->select('b.previous_city')
+        ->getQuery()
+        ->getResult();
+    }
     // /**
     //  * @return Background[] Returns an array of Background objects
     //  */
