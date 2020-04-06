@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Data for decision{% endblock %}
+
+    {% block body %}
+
+    	<div class="container">
+
+    		<div class="row">
+
+    			<h1>Data for decision</h1>
+
+    		</div>
+
+    		<br></br>
+
+    		<div class="row">
+
+    			<p>{% for application in applications %}
+    				{{ loop.length}} 
+    			{% endfor %}</p>
+
+    		</div>
+
+    	</div>
+
+   	{% endblock %}
