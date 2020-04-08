@@ -39,22 +39,28 @@ class DataController extends AbstractController
     {
         return $this->render('admission/data/index.html.twig', [
             'applications' => $applicationRepository->findAll(),
+            'countapp' => $applicationRepository->countApplication(),
             'degrees' => $degreeRepository->findAll(),
             'academicdatas' => $academicDataRepository->findAll(),
             'academiclevels' => $academicLevelRepository->findAll(),
             'backgounds' => $backgroundRepository->findAll(),
             'colleges' => $collegeRepository->findAll(),
+            'countcollscience' => $academicDataRepository->countCollegeScience(),
+            'countcollengineering' => $academicDataRepository->countCollegeEngineering(),
             //'documents' => $documentRepository->findAll(),
             'modules' => $moduleRepository->findAll(),
             'students' => $studentRepository->findAll(),
+            'countstu' => $studentRepository->countStudent(),
             'users' => $userRepository->findAll(),
+            'countundergraduate' => $academicDataRepository->countUndergraduate(),
+            'countpostgraduate' => $academicDataRepository->countPostgraduate(),
+            'countmaster' => $academicDataRepository->countMaster(),
+            'countphd' => $academicDataRepository->countPhD(),
+            'essai' => $academicDataRepository->essai(),
+            'essai2' => $academicDataRepository->essai2(),
 
         ]);
     }
 
-    public function getTotalApplicant($applications)
-    {
-    	return var_dump(count($applications));
-    }
 
 }

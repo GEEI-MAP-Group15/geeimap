@@ -6,9 +6,11 @@
 
     	<div class="container">
 
+    		<br></br>
+
     		<div class="row">
 
-    			<h1>Data for decision</h1>
+    			<h1 class="col-lg-12 text-center">Data for decision</h1>
 
     		</div>
 
@@ -16,12 +18,71 @@
 
     		<div class="row">
 
-    			<p>{% for application in applications %}
-    				{{ loop.length}} 
-    			{% endfor %}</p>
+    			<table class="col-lg-12 table-center table-bordered table-striped">
+
+                	<thead class="thead-light text-center">
+
+	                    <tr>
+	                        <th>Data</th>
+	                        <th>Knowledge</th>
+	                        
+	                    </tr>
+
+                	</thead>
+
+                	<tbody class="text-center">
+
+                		<tr>
+                			<td>Total number of application received</td>
+                			<td>{{countapp}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Total number of students applying in Science college</td>
+                			<td>{{countcollscience}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying in Engineering college</td>
+                			<td>{{countcollengineering}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying as Undergraduate</td>
+                			<td>{{countundergraduate}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying as Postgraduate</td>
+                			<td>{{countpostgraduate}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying to a Master</td>
+                			<td>{{countmaster}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying to a PhD</td>
+                			<td>{{countphd}}</td>
+                		</tr>
+                		<tr>
+                			<td>essai</td>
+                			<td>{%for i in essai%}
+                					{{loop.length}}
+                					{%endfor%}
+                			</td>
+                		</tr>
+                		<tr>
+                			<td>Essai2</td>
+                			<td>{{essai2}}</td>
+                		</tr>
+
+
+
+                	</tbody>
+
+                </table>
 
     		</div>
 
     	</div>
+
+    	<br></br>
 
    	{% endblock %}

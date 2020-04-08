@@ -19,6 +19,13 @@ class ApplicationRepository extends ServiceEntityRepository
         parent::__construct($registry, Application::class);
     }
 
+    public function countApplication()
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb -> select($qb->expr()->count('e'));
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+
     // /**
     //  * @return Application[] Returns an array of Application objects
     //  */
