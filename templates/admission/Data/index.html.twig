@@ -16,6 +16,12 @@
 
     		<br></br>
 
+            <div class="row">
+
+                <h3 class="col-lg-12">General information</h3>
+
+            </div>
+
     		<div class="row">
 
     			<table class="col-lg-12 table-center table-bordered table-striped">
@@ -25,7 +31,6 @@
 	                    <tr>
 	                        <th>Data</th>
 	                        <th>Knowledge</th>
-	                        
 	                    </tr>
 
                 	</thead>
@@ -33,62 +38,306 @@
                 	<tbody class="">
 
                 		<tr>
-                			<td>Total number of application received</td>
-                			<td>{{countapp}}</td>
+                			<td style="width:50%;">Total number of application received</td>
+                			<td class="text-center">{{countapp}}</td>
                 		</tr>
 
-                		<tr>
-                			<td>Total number of students applying in Science college</td>
-                			<td>{{countcollscience}}</td>
-                		</tr>
-                		<tr>
-                			<td>Total number of students applying in Engineering college</td>
-                			<td>{{countcollengineering}}</td>
-                		</tr>
-                		<tr>
-                			<td>Total number of students applying as Undergraduate</td>
-                			<td>{{countundergraduate}}</td>
-                		</tr>
-                		<tr>
-                			<td>Total number of students applying as Postgraduate</td>
-                			<td>{{countpostgraduate}}</td>
-                		</tr>
-                		<tr>
-                			<td>Total number of students applying to a Master</td>
-                			<td>{{countmaster}}</td>
-                		</tr>
-                		<tr>
-                			<td>Total number of students applying to a PhD</td>
-                			<td>{{countphd}}</td>
-                		</tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <br></br>
+
+            <div class="row">
+
+                <h3 class="col-lg-12">Capacity data for colleges</h3>
+
+            </div>
+
+            <div class="row">
+
+                <table class="col-lg-12 table-center table-bordered table-striped">
+
+                    <thead class="thead-light text-center">
 
                         <tr>
-                            {%for i in colleges%}
-                                {%if i.name=="Science"%}
-                                    <td>Remaining capacity in {{i.name}} college</td>
-                                    <td>
-                                        {{(i.capacity - countcollscience)}}
-                                {%endif%}
-                            {%endfor%}
-                            </td>
-                        </tr>
-                        <tr>
-                            {%for i in colleges%}
-                                {%if i.name=="Engineering"%}
-                                    <td>Remaining capacity in {{i.name}} college</td>
-                                    <td>
-                                        {{(i.capacity - countcollengineering)}}
-                                {%endif%}
-                            {%endfor%}
-                            </td>
+                            <th style="width:20%;">Data</th>
+                            <th style="width:20%;">Casual capacity</th>
+                            <th style="width:20%;">Increased capacity during crisis (+20%)</th>
+                            <th style="width:20%;">Remaining increased crisis capacity</th>
+                            <th style="width:20%;">Number of student application received</th>
                         </tr>
 
+                    </thead>
 
-                	</tbody> 
+                    <tbody>
+
+                        {% for i in colleges %}
+                            {% if i.name=="Science"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countcollscience %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollscience - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollscience}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countcollscience) and (i.enrolledstudent + countcollscience) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollscience - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollscience}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollscience - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollscience}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% for i in colleges %}
+                            {% if i.name=="Engineering"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countcollengineering %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollengineering - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollengineering}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countcollengineering) and (i.enrolledstudent + countcollengineering) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollengineering - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollengineering}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} college</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countcollengineering - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countcollengineering}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </tbody>
 
                 </table>
 
-    		</div>
+            </div>
+
+
+            <br></br>
+
+            <div class="row">
+
+                <h3 class="col-lg-12">Capacity data for academic levels</h3>
+
+            </div>
+
+            <div class="row">
+
+
+                <table class="col-lg-12 table-center table-bordered table-striped">
+
+                    <thead class="thead-light text-center">
+
+                        <tr>
+                            <th style="width:20%;">Data</th>
+                            <th style="width:20%;">Casual capacity</th>
+                            <th style="width:20%;">Increased capacity during crisis (+20%)</th>
+                            <th style="width:20%;">Remaining increased crisis capacity</th>
+                            <th style="width:20%;">Number of student application received</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for i in academiclevels %}
+                            {% if i.name=="Undergraduate"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countundergraduate %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countundergraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countundergraduate}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countundergraduate) and (i.enrolledstudent + countundergraduate) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countundergraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countundergraduate}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countundergraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countundergraduate}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% for i in academiclevels %}
+                            {% if i.name=="Postgraduate"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countpostgraduate %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countpostgraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countpostgraduate}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countpostgraduate) and (i.enrolledstudent + countpostgraduate) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countpostgraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countpostgraduate}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countpostgraduate - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countpostgraduate}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% for i in academiclevels %}
+                            {% if i.name=="Master" or i.name=="MSc" or i.name=="master"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countmaster %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countmaster - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countmaster}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countmaster) and (i.enrolledstudent + countmaster) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countmaster - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countmaster}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countmaster - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countmaster}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% for i in academiclevels %}
+                            {% if i.name=="PhD" or i.name=="phd" or i.name=="PHD"%}
+                                {% if 1.2*i.capacity < i.enrolledstudent + countphd %}
+                                    <tr class="table-danger">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countphd - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countphd}}</td>    
+                                    </tr>
+                                {% elseif i.capacity <= (i.enrolledstudent + countphd) and (i.enrolledstudent + countphd) <= (1.2*i.capacity) %}
+                                    <tr class="table-warning">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countphd - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countphd}}</td>    
+                                    </tr>
+                                {% else %}
+                                    <tr class="table-success">
+                                        <td>{{i.name}} academic level</td>
+                                        <td class="text-center">{{i.capacity}}</td>
+                                        <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                        <td class="text-center">
+                                            {{(1.2*i.capacity - countphd - i.enrolledstudent)}}
+                                        </td>
+                                        <td  class="text-center">{{countphd}}</td>    
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+
+
+
+                    </tbody>
+
+                </table>
+
+            </div>    		
+
+    		
 
     	</div>
 

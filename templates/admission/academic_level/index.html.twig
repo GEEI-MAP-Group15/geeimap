@@ -28,6 +28,7 @@
                         {#<th>Id</th>#}
                         <th>Type of Academic Level</th>
                         <th>Capacity of Academic Level</th>
+                        <th>Currently enrolled student</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         {#<td>{{ academic_level.id }}</td>#}
                         <td>{{ academic_level.name }}</td>
                         <td>{{ academic_level.capacity }}</td>
+                        <td>{{academic_level.enrolledstudent}}</td>
                         <td align="center">
                             <div class="col-lg-12 btn-group d-flex" role="group">
                                 <a href="{{ path('academic_level_show', {'id': academic_level.id}) }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:33%;">Show</a>

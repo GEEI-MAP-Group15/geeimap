@@ -14,6 +14,7 @@ class AcademicLevelType extends AbstractType
         $builder
             ->add('name')
             ->add('capacity')
+            ->add('enrolledstudent')
         ;
     }
 

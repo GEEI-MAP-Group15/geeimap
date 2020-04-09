@@ -22,6 +22,7 @@ class DegreeType extends AbstractType
                 'multiple' => true,
                 'required' => false
             ])
+            ->add('enrolledstudent')
         ;
     }
 
