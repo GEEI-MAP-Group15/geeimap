@@ -24,6 +24,11 @@ class Module
     private $name;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $enrolledstudent;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Degree", mappedBy="modules")
      */
     private $degrees;
@@ -108,6 +113,18 @@ class Module
             $this->academicdatas->removeElement($academicdata);
             $academicdata->removeModule($this);
         }
+
+        return $this;
+    }
+
+    public function getEnrolledstudent(): ?int
+    {
+        return $this->enrolledstudent;
+    }
+
+    public function setEnrolledstudent(int $enrolledstudent): self
+    {
+        $this->enrolledstudent = $enrolledstudent;
 
         return $this;
     }

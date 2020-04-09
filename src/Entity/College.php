@@ -23,6 +23,12 @@ class College
      */
     private $name;
 
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $enrolledstudent;
+
     /**
      * @ORM\Column(type="integer")
      */
@@ -94,6 +100,18 @@ class College
     public function setCapacity(int $capacity): self
     {
         $this->capacity = $capacity;
+
+        return $this;
+    }
+
+    public function getEnrolledstudent(): ?int
+    {
+        return $this->enrolledstudent;
+    }
+
+    public function setEnrolledstudent(int $enrolledstudent): self
+    {
+        $this->enrolledstudent = $enrolledstudent;
 
         return $this;
     }

@@ -26,6 +26,11 @@ class Degree
     /**
      * @ORM\Column(type="integer")
      */
+    private $enrolledstudent;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
     private $capacity;
 
     /**
@@ -89,6 +94,18 @@ class Degree
         if ($this->modules->contains($module)) {
             $this->modules->removeElement($module);
         }
+
+        return $this;
+    }
+
+    public function getEnrolledstudent(): ?int
+    {
+        return $this->enrolledstudent;
+    }
+
+    public function setEnrolledstudent(int $enrolledstudent): self
+    {
+        $this->enrolledstudent = $enrolledstudent;
 
         return $this;
     }
