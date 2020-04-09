@@ -17,7 +17,11 @@ class ResumePageController extends AbstractController
      */
     public function index(ApplicationRepository $applicationRepository): Response
     {
-    	$tempid = $this->getUser()->getStudent()->getApplication()->getId();
+    	$tempid = $this->getUser()->getStudent();
+        if ($tempid != null) {
+           $tempid =  $this->getUser()->getStudent()->getApplication()->getId();
+        }
+        
     	$application = $applicationRepository->findBy([
     		'id' => $tempid
     	]);
