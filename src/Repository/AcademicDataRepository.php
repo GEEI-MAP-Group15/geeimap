@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query\Expr\Join;
 
+
 /**
  * @method AcademicData|null find($id, $lockMode = null, $lockVersion = null)
  * @method AcademicData|null findOneBy(array $criteria, array $orderBy = null)
@@ -95,16 +96,37 @@ class AcademicDataRepository extends ServiceEntityRepository
 
     public function essai2()
     {
-        $rawSql = "SELECT count(college_id) FROM geeimap.academic_data a JOIN geeimap.college c on a.college_id=c.id WHERE c.name='Science'";
 
-        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
-        $stmt->execute([]);
-        $plop = $stmt->fetchAll();
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT count(college_id) FROM geeimap.academic_data a JOIN geeimap.college c on a.college_id=c.id WHERE c.name=:col");
+        $statement->bindValue('col', "Science");
+        $statement->execute();
+        $results = $statement->fetch();
 
-        return $plop[0];    
+        //$rawSql = "SELECT count(college_id) FROM geeimap.academic_data a JOIN geeimap.college c on a.college_id=c.id WHERE c.name='Science'";
+
+        //$stmt = $this->getEntityManager()->getConnection()->prepare($rawSql)->execute();
+        //$result = $stmt->getResult();
+        
+        return array_shift($results);  
+ 
     }
 
+    /*public function essai2()
+    {
+        $result = $this->createQueryBuilder('a')
+            ->Select('COUNT(a.college)')
+            ->join('a.college', 'c')
+            ->where('c.name = :name')
+            //->count('a.college_id')
+            ->setParameter('name', 'Engineering')
+            ->getQuery()
+            ->getSingleScalarResult();
 
+        return $result;   
+    }*/
 
 
 
