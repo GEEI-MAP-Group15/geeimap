@@ -56,9 +56,7 @@ class DataController extends AbstractController
             'countpostgraduate' => $academicDataRepository->countPostgraduate(),
             'countmaster' => $academicDataRepository->countMaster(),
             'countphd' => $academicDataRepository->countPhD(),
-            'essai' => $academicDataRepository->essai(),
-            'essai2' => $academicDataRepository->essai2(),
-
+            
         ]);
     }
 
