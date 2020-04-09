@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Data for decision{% endblock %}
+
+    {% block body %}
+
+    	<div class="container">
+
+    		<br></br>
+
+    		<div class="row">
+
+    			<h1 class="col-lg-12 text-center">Data for decision making</h1>
+
+    		</div>
+
+    		<br></br>
+
+    		<div class="row">
+
+    			<table class="col-lg-12 table-center table-bordered table-striped">
+
+                	<thead class="thead-light text-center">
+
+	                    <tr>
+	                        <th>Data</th>
+	                        <th>Knowledge</th>
+	                        
+	                    </tr>
+
+                	</thead>
+
+                	<tbody class="">
+
+                		<tr>
+                			<td>Total number of application received</td>
+                			<td>{{countapp}}</td>
+                		</tr>
+
+                		<tr>
+                			<td>Total number of students applying in Science college</td>
+                			<td>{{countcollscience}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying in Engineering college</td>
+                			<td>{{countcollengineering}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying as Undergraduate</td>
+                			<td>{{countundergraduate}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying as Postgraduate</td>
+                			<td>{{countpostgraduate}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying to a Master</td>
+                			<td>{{countmaster}}</td>
+                		</tr>
+                		<tr>
+                			<td>Total number of students applying to a PhD</td>
+                			<td>{{countphd}}</td>
+                		</tr>
+
+                        <tr>
+                            {%for i in colleges%}
+                                {%if i.name=="Science"%}
+                                    <td>Remaining capacity in {{i.name}} college</td>
+                                    <td>
+                                        {{(i.capacity - countcollscience)}}
+                                {%endif%}
+                            {%endfor%}
+                            </td>
+                        </tr>
+                        <tr>
+                            {%for i in colleges%}
+                                {%if i.name=="Engineering"%}
+                                    <td>Remaining capacity in {{i.name}} college</td>
+                                    <td>
+                                        {{(i.capacity - countcollengineering)}}
+                                {%endif%}
+                            {%endfor%}
+                            </td>
+                        </tr>
+
+
+                	</tbody> 
+
+                </table>
+
+    		</div>
+
+    	</div>
+
+    	<br></br>
+
+   	{% endblock %}
