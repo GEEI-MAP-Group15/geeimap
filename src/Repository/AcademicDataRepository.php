@@ -167,11 +167,50 @@ class AcademicDataRepository extends ServiceEntityRepository
     }
 
 
+    public function applicantDegree()
+    {
 
-    
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT distinct degree_id, count(degree_id) as b FROM geeimap.academic_data GROUP BY degree_id");
+        $statement->execute();
+        $results = $statement->fetchAll();
 
+        
+        return $results;  
+ 
+    }
 
+    public function applicantDegreeId()
+    {
 
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT degree_id FROM geeimap.academic_data;");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+    public function degreeId()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT id FROM geeimap.degree;");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
 
 
 

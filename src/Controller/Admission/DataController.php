@@ -37,6 +37,41 @@ class DataController extends AbstractController
      */
     public function index(ApplicationRepository $applicationRepository, DegreeRepository $degreeRepository, AcademicDataRepository $academicDataRepository, AcademicLevelRepository $academicLevelRepository, BackgroundRepository $backgroundRepository, CollegeRepository $collegeRepository, /*DocumentRepository $documentRepository,*/ ModuleRepository $moduleRepository, StudentRepository $studentRepository, UserRepository $userRepository): Response
     {
+        
+        $applicantdegree = $academicDataRepository->applicantDegree();
+        $applicantdegreeid = $academicDataRepository->applicantDegreeId();
+        $degree = $degreeRepository->findAll();
+        $degreeid = $academicDataRepository->degreeId();
+
+        //$a = array(1,2,3,4);
+
+        foreach ($degreeid as $value) { 
+
+            $i = 0;
+            $tab = array();
+
+            while ($i <= count($value))
+            { 
+
+                if (in_array($degreeid[$i], $applicantdegreeid)) {
+                    
+                    $tab[$i] = $degree[$i];
+                }
+
+                else {
+
+                    $tab[$i] = 0;
+                }
+
+                $i ++;
+
+               //return $tab;
+            }
+            
+            //return $tab;
+        }
+
+
         return $this->render('admission/data/index.html.twig', [
             'applications' => $applicationRepository->findAll(),
             'countapp' => $applicationRepository->countApplication(),
@@ -56,9 +91,34 @@ class DataController extends AbstractController
             'countpostgraduate' => $academicDataRepository->countPostgraduate(),
             'countmaster' => $academicDataRepository->countMaster(),
             'countphd' => $academicDataRepository->countPhD(),
+            'applicantdegree' => $academicDataRepository->applicantDegree(),
+            'applicantdegreeid' => $academicDataRepository->applicantDegreeId(),
+            'countindegree'=> $tab,
             
         ]);
     }
+
+
+    /*public function countDegreeApplication(AcademicDataRepository $academicDataRepository, DegreeRepository $degreeRepository)
+    {
+        //$applicantdegree = $academicDataRepository->applicantDegree();
+        //$applicantdegreeid = $academicDataRepository->applicantDegreeId();
+        //$degree = $degreeRepository->findAll();
+
+        $b = array(1,2,3,4);
+
+        foreach ($b as $key => $value) {
+             
+            //echo "{$key} => {$value} ";
+            $a = print_r($b);
+
+         } 
+
+        return $this->render(
+            'admission/data/index.html.twig',
+            ['countindegree'=>$a]
+        );
+    }*/
 
 
 }

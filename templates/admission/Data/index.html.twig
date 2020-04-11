@@ -335,8 +335,76 @@
 
                 </table>
 
-            </div>    		
+            </div>
 
+            <br></br>
+
+            <div class="row">
+
+                <h3 class="col-lg-12">Capacity data for degrees</h3>
+
+            </div>
+
+            <div class="row">
+
+
+                <table class="col-lg-12 table-center table-bordered table-striped">
+
+                    <thead class="thead-light text-center">
+
+                        <tr>
+                            <th style="width:20%;">Data</th>
+                            <th style="width:20%;">Casual capacity</th>
+                            <th style="width:20%;">Increased capacity during crisis (+20%)</th>
+                            <th style="width:20%;">Remaining increased crisis capacity</th>
+                            <th style="width:20%;">Number of student application received</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>  
+
+                        {#{% for i in degrees %}
+
+
+
+                            {% if 1.2*i.capacity < i.enrolledstudent + countphd %}
+
+                                <tr class="table-danger">
+
+                                    <td>{{i.name}} degree</td>
+                                    <td class="text-center">{{i.capacity}}</td>
+                                    <td class="text-center">{{(1.2*i.capacity)}}</td>
+                                    <td class="text-center">
+                                        {{(1.2*i.capacity - countphd - i.enrolledstudent)}}
+                                    </td>
+                                    <td  class="text-center">
+                                        {% for i in applicantdegree %}
+
+                                    </td>    
+                                </tr>   
+
+                            {% elseif i.capacity <= (i.enrolledstudent + countphd) and (i.enrolledstudent + countphd) <= (1.2*i.capacity) %}
+
+                            {% else %}
+
+                            {% endif %}
+
+                        {% endfor %}#}
+
+
+                        {% for i in countindegree %}
+                            <tr>
+                                <td>Total number of application received</td>
+                                <td class="text-center">{{countapp}}</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{i}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>  	
+
+                </table>
     		
 
     	</div>
