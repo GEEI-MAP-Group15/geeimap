@@ -50,13 +50,14 @@ class DataController extends AbstractController
             
             for ($j=0; $j < count($applicantdegreeid); $j++) {
                 
-                array_push($tabdegreeid, $applicantdegreeid[$j]);
+                array_push($tabdegreeid, $applicantdegreeid[$j]["degree_id"]);
 
             }
 
             if (in_array($degreeid[$i]["id"], $tabdegreeid)) {
                 
-                array_push($tab, $degreeid[$i]["id"]);
+                //array_push($tab, $degreeid[$i]["id"]);
+                array_push($tab, $applicantdegree[$i]["b"]);
             }
 
             else {
