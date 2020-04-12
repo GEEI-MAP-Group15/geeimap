@@ -43,32 +43,26 @@ class DataController extends AbstractController
         $degree = $degreeRepository->findAll();
         $degreeid = $academicDataRepository->degreeId();
 
-        //$a = array(1,2,3,4);
+        $tab = array();
+        $tabdegreeid = array();
 
-        foreach ($degreeid as $value) { 
-
-            $i = 0;
-            $tab = array();
-
-            while ($i <= count($value))
-            { 
-
-                if (in_array($degreeid[$i], $applicantdegreeid)) {
-                    
-                    $tab[$i] = $degree[$i];
-                }
-
-                else {
-
-                    $tab[$i] = 0;
-                }
-
-                $i ++;
-
-               //return $tab;
-            }
+        for ($i=0; $i < count($degreeid); $i++) { 
             
-            //return $tab;
+            for ($j=0; $j < count($applicantdegreeid); $j++) {
+                
+                array_push($tabdegreeid, $applicantdegreeid[$j]);
+
+            }
+
+            if (in_array($degreeid[$i]["id"], $tabdegreeid)) {
+                
+                array_push($tab, $degreeid[$i]["id"]);
+            }
+
+            else {
+
+                array_push($tab, 0);
+            }
         }
 
 

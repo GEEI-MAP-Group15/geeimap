@@ -188,7 +188,7 @@ class AcademicDataRepository extends ServiceEntityRepository
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT degree_id FROM geeimap.academic_data;");
+        $statement = $connection->prepare("SELECT degree_id FROM geeimap.academic_data");
         $statement->execute();
         $results = $statement->fetchAll();
 
@@ -203,7 +203,7 @@ class AcademicDataRepository extends ServiceEntityRepository
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT id FROM geeimap.degree;");
+        $statement = $connection->prepare("SELECT id FROM geeimap.degree");
         $statement->execute();
         $results = $statement->fetchAll();
 

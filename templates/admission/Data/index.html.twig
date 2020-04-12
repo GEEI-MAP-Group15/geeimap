@@ -394,13 +394,15 @@
 
 
                         {% for i in countindegree %}
-                            <tr>
-                                <td>Total number of application received</td>
-                                <td class="text-center">{{countapp}}</td>
-                                <td></td>
-                                <td></td>
-                                <td>{{i}}</td>
-                            </tr>
+                            {#{% for j in 1..100 %}#}
+                                <tr>
+                                    <td>Total number of application received</td>
+                                    <td class="text-center">{{countapp}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>{{i}}</td>
+                                </tr>
+                            {#{% endfor %}#}    
                         {% endfor %}
                     </tbody>  	
 
