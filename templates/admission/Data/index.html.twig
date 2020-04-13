@@ -357,6 +357,7 @@
                             <th style="width:20%;">Casual capacity</th>
                             <th style="width:20%;">Increased capacity during crisis (+20%)</th>
                             <th style="width:20%;">Remaining increased crisis capacity</th>
+                            <th style="width:20%;">Number of enrolled student</th>
                             <th style="width:20%;">Number of student application received</th>
                         </tr>
 
@@ -364,45 +365,43 @@
 
                     <tbody>  
 
-                        {#{% for i in degrees %}
+                        {% for i in 0 .. (countdegreeid - 1) %}
 
-
-
-                            {% if 1.2*i.capacity < i.enrolledstudent + countphd %}
-
+                            {% if degreecapacities[i]*1.2 < degreeenrolled[i] + nbstudentindegree[i] %}
+        
                                 <tr class="table-danger">
+                                    <td style="width:30%;">{{degreenames[i]}} degree</td>
+                                    <td class="text-center">{{degreecapacities[i]}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2 - (degreeenrolled[i] + nbstudentindegree[i])}}</td>
+                                    <td class="text-center">{{degreeenrolled[i]}}</td>
+                                    <td class="text-center">{{nbstudentindegree[i]}}</td>
+                                </tr>
 
-                                    <td>{{i.name}} degree</td>
-                                    <td class="text-center">{{i.capacity}}</td>
-                                    <td class="text-center">{{(1.2*i.capacity)}}</td>
-                                    <td class="text-center">
-                                        {{(1.2*i.capacity - countphd - i.enrolledstudent)}}
-                                    </td>
-                                    <td  class="text-center">
-                                        {% for i in applicantdegree %}
+                            {% elseif degreecapacities[i] <= (degreeenrolled[i] + nbstudentindegree[i]) and (degreeenrolled[i] + nbstudentindegree[i]) <= degreecapacities[i]*1.2 %}
 
-                                    </td>    
-                                </tr>   
-
-                            {% elseif i.capacity <= (i.enrolledstudent + countphd) and (i.enrolledstudent + countphd) <= (1.2*i.capacity) %}
+                                <tr class="table-warning">
+                                    <td style="width:30%;">{{degreenames[i]}} degree</td>
+                                    <td class="text-center">{{degreecapacities[i]}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2 - (degreeenrolled[i] + nbstudentindegree[i])}}</td>
+                                    <td class="text-center">{{degreeenrolled[i]}}</td>
+                                    <td class="text-center">{{nbstudentindegree[i]}}</td>
+                                </tr>
 
                             {% else %}
 
-                            {% endif %}
-
-                        {% endfor %}#}
-
-
-                        {% for i in countindegree %}
-                            {#{% for j in essai %}#}
-                                <tr>
-                                    <td>Total number of application received</td>
-                                    <td class="text-center">{{countapp}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>{{i}}</td>
+                                <tr class="table-success">
+                                    <td style="width:30%;">{{degreenames[i]}} degree</td>
+                                    <td class="text-center">{{degreecapacities[i]}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2}}</td>
+                                    <td class="text-center">{{degreecapacities[i]*1.2 - (degreeenrolled[i] + nbstudentindegree[i])}}</td>
+                                    <td class="text-center">{{degreeenrolled[i]}}</td>
+                                    <td class="text-center">{{nbstudentindegree[i]}}</td>
                                 </tr>
-                            {#{% endfor %}#}   
+
+                            {% endif %}
+                        
                         {% endfor %}
                     </tbody>  	
 

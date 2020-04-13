@@ -213,6 +213,22 @@ class AcademicDataRepository extends ServiceEntityRepository
     }
 
 
+    public function degreeCapacity()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT capacity FROM geeimap.degree");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+
 
     // /**
     //  * @return AcademicData[] Returns an array of AcademicData objects

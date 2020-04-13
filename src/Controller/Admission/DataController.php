@@ -35,18 +35,27 @@ class DataController extends AbstractController
     /**
      * @Route("/", name="data_index", methods={"GET"})
      */
+
     public function index(ApplicationRepository $applicationRepository, DegreeRepository $degreeRepository, AcademicDataRepository $academicDataRepository, AcademicLevelRepository $academicLevelRepository, BackgroundRepository $backgroundRepository, CollegeRepository $collegeRepository, /*DocumentRepository $documentRepository,*/ ModuleRepository $moduleRepository, StudentRepository $studentRepository, UserRepository $userRepository): Response
     {
         
         $applicantdegree = $academicDataRepository->applicantDegree();
         $applicantdegreeid = $academicDataRepository->applicantDegreeId();
-        $degree = $degreeRepository->findAll();
+        $degrees = $degreeRepository->findAll();
         $degreeid = $academicDataRepository->degreeId();
+        $countdegreeid = count($degreeid);
 
         $tab = array();
         $tabdegreeid = array();
+        $degreecapacities = array();
+        $degreename = array();
+        $degreeenrolled = array();
 
-        for ($i=0; $i < count($degreeid); $i++) { 
+        for ($i=0; $i < $countdegreeid; $i++) { 
+
+            array_push($degreecapacities, $degrees[$i]->getCapacity());
+            array_push($degreename, $degrees[$i]->getName());
+            array_push($degreeenrolled, $degrees[$i]->getEnrolledstudent());
             
             for ($j=0; $j < count($applicantdegreeid); $j++) {
                 
@@ -56,13 +65,12 @@ class DataController extends AbstractController
 
             if (in_array($degreeid[$i]["id"], $tabdegreeid)) {
                 
-                //array_push($tab, $degreeid[$i]["id"]);
                 array_push($tab, $applicantdegree[$i]["b"]);
             }
 
             else {
 
-                array_push($tab, 0);
+                array_push($tab, "0");
             }
         }
 
@@ -88,32 +96,15 @@ class DataController extends AbstractController
             'countphd' => $academicDataRepository->countPhD(),
             'applicantdegree' => $academicDataRepository->applicantDegree(),
             'applicantdegreeid' => $academicDataRepository->applicantDegreeId(),
-            'countindegree'=> $tab,
+            'nbstudentindegree'=> $tab, 
+            'countdegreeid' => $countdegreeid,
+            'degreecapacities' => $degreecapacities,
+            'degreenames' => $degreename,
+            'degreeenrolled' => $degreeenrolled,
+
             
         ]);
     }
-
-
-    /*public function countDegreeApplication(AcademicDataRepository $academicDataRepository, DegreeRepository $degreeRepository)
-    {
-        //$applicantdegree = $academicDataRepository->applicantDegree();
-        //$applicantdegreeid = $academicDataRepository->applicantDegreeId();
-        //$degree = $degreeRepository->findAll();
-
-        $b = array(1,2,3,4);
-
-        foreach ($b as $key => $value) {
-             
-            //echo "{$key} => {$value} ";
-            $a = print_r($b);
-
-         } 
-
-        return $this->render(
-            'admission/data/index.html.twig',
-            ['countindegree'=>$a]
-        );
-    }*/
 
 
 }
