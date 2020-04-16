@@ -39,6 +39,8 @@ class DataController extends AbstractController
     public function index(ApplicationRepository $applicationRepository, DegreeRepository $degreeRepository, AcademicDataRepository $academicDataRepository, AcademicLevelRepository $academicLevelRepository, BackgroundRepository $backgroundRepository, CollegeRepository $collegeRepository, /*DocumentRepository $documentRepository,*/ ModuleRepository $moduleRepository, StudentRepository $studentRepository, UserRepository $userRepository): Response
     {
         
+        //degree data for decision
+
         $applicantdegree = $academicDataRepository->applicantDegree();
         $applicantdegreeid = $academicDataRepository->applicantDegreeId();
         $degrees = $degreeRepository->findAll();
