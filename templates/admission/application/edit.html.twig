@@ -48,7 +48,7 @@
 
                 		<tr>
                 			<td>Date of Birth</td>
-                			<td></td>
+                			<td>{{application.student.dateofbirth|format_datetime()}}</td>
                 		</tr>
 
                 		<tr>
@@ -68,17 +68,24 @@
 
                 		<tr>
                 			<td>Security Reason</td>
-                			<td>{{application.student.background.securityreason}}</td>
+                			<td>{{application.student.background.securityreasontype}}</td>
                 		</tr>
 
                 		<tr>
                 			<td>Previous year validated?</td>
-                			<td>{{application.student.background.isvalidated}}</td>
+                			<td>{% if application.student.background.isvalidated == 0 %}
+                                    No
+                                {% elseif application.student.background.isvalidated == 1 %}
+                                    Yes
+                                {% else %}
+                                    {{application.student.background.isvalidated}}
+                                {% endif %}
+                            </td>
                 		</tr>
 
                 		<tr>
                 			<td>Period type</td>
-                			<td>{{application.student.background.periodtype}}</td>
+                			<td>{{application.student.background.periodtypetype}}</td>
                 		</tr>
 
                 		<tr>
