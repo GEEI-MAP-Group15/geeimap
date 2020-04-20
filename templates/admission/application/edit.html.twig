@@ -73,7 +73,14 @@
 
                 		<tr>
                 			<td>Previous year validated?</td>
-                			<td>{{application.student.background.isvalidated}}</td>
+                			<td>{% if application.student.background.isvalidated == 0 %}
+                                    No
+                                {% elseif application.student.background.isvalidated == 1 %}
+                                    Yes
+                                {% else %}
+                                    {{application.student.background.isvalidated}}
+                                {% endif %}
+                            </td>
                 		</tr>
 
                 		<tr>
