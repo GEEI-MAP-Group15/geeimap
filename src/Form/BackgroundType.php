@@ -34,6 +34,7 @@ class BackgroundType extends AbstractType
             ->add('is_validated', CheckboxType::class, [
                 'label' => 'Previous year validated ?',
                 'help' => 'Tick if you validated your previous year/semester in troubled University',
+                'required' => false,
             ])
             ->add('period_type', ChoiceType::class, [
                 #'choices' => Property::HEAT
