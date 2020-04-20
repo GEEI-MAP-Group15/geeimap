@@ -20,7 +20,9 @@
                 <td>{{ document.typeType }}</td>
                 <td>
                     <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
+                    {% if not is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
+                {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -30,6 +32,7 @@
         {% endfor %}
         </tbody>
     </table>
-
+    {% if not is_granted('ROLE_ADMIN') %}
     <a href="{{ path('document_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
