@@ -9,6 +9,7 @@ use App\Form\ModuleType;
 use App\Form\ApplicationType;
 use App\Repository\ModuleRepository;
 use App\Repository\ApplicationRepository;
+use App\Repository\DocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -65,7 +66,7 @@ class ApplicationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="application_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Application $application): Response
+    public function edit(Request $request, Application $application, DocumentRepository $documentRepository): Response
     {
         $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
@@ -79,6 +80,8 @@ class ApplicationController extends AbstractController
         return $this->render('admission/application/edit.html.twig', [
             'application' => $application,
             'form' => $form->createView(),
+            //'documents' => $documentRepository->findBy($application),
+            'documents' => $application->getStudent()->getDocuments(),
         ]);
     }
 

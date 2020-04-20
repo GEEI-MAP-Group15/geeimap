@@ -17,9 +17,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class Document
 {
     const TYPE = [
-        0 => 'Pending',
-        1 => 'Accepted',
-        2 => 'Rejected'
+        0 => 'Home Address Evidence',
+        1 => 'National Identification Evidence',
+        2 => 'Student Card Evidence',
+        3 => 'Security Reason Evidence',
+        4 => 'Previous University Evidence',
+        5 => 'Previous Semester Evidence',
     ];
     /**
      * @ORM\Id()
@@ -77,7 +80,7 @@ class Document
         return $this->filename;
     }
 
-    public function setFilename(string $filename): self
+    public function setFilename(?string $filename): self
     {
         $this->filename = $filename;
 
