@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Background;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Background|null find($id, $lockMode = null, $lockVersion = null)

@@ -16,11 +16,11 @@ class SecurityController extends AbstractController
     {
         if($this->isGranted("ROLE_ADMIN")) {
 
-            return $this->redirectToRoute('degree_index');
+            return $this->redirectToRoute('admission_index');
         }
         if($this->isGranted("ROLE_STUDENT")) {
 
-            return $this->redirectToRoute('formulaire');
+            return $this->redirectToRoute('student_index');
         }
         
         $lastUsername = $authenticationUtils->getLastUsername();

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Application index{% endblock %}
+
+{% block body %}
+    <h1>Application index</h1>
+
+        {% if application %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for application in application %}
+            <tr>
+                <td>{{ application.id }}</td>
+                <td>{{ application.statusType }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        {% else %}
+            <tr>
+                <h5>You don't have any application</h5>
+            </tr>
+                <a href="{{ path('formulaire') }}">Create new</a>
+        {% endif %}
+        {{ include('document/index.html.twig')}}
+
+{% endblock %}

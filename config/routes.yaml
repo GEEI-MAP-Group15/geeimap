@@ -9,9 +9,9 @@ admission:
   path: /admission
   controller: App\Controller\Admission\AdmissionController:index
 
-formulaire:
-  path: /student/formulaire
-  controller: App\Controller\Student\FormulaireController:fillform
+student:
+  path: /student
+  controller: App\Controller\Student\ResumePageController:index
 
 login:
   path: /login
