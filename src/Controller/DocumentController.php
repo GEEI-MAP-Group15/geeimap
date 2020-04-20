@@ -42,7 +42,7 @@ class DocumentController extends AbstractController
             $entityManager->persist($document);
             $entityManager->flush();
 
-            return $this->redirectToRoute('document_index');
+            return $this->redirectToRoute('student_index');
         }
 
         return $this->render('document/new.html.twig', [
@@ -66,13 +66,13 @@ class DocumentController extends AbstractController
      */
     public function edit(Request $request, Document $document): Response
     {
-        $form = $this->createForm(Document1Type::class, $document);
+        $form = $this->createForm(DocumentType::class, $document);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('document_index');
+            return $this->redirectToRoute('student_index');
         }
 
         return $this->render('document/edit.html.twig', [
@@ -92,6 +92,6 @@ class DocumentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('document_index');
+        return $this->redirectToRoute('student_index');
     }
 }

@@ -3,7 +3,7 @@
 {% block title %}Application index{% endblock %}
 
 {% block body %}
-    <h1>application index</h1>
+    <h1>Application index</h1>
 
         {% if application %}
     <table class="table">
@@ -26,7 +26,8 @@
             <tr>
                 <h5>You don't have any application</h5>
             </tr>
-                <a href="{{ path('document_new') }}">Create new</a>
+                <a href="{{ path('formulaire') }}">Create new</a>
         {% endif %}
+        {{ include('document/index.html.twig')}}
 
 {% endblock %}

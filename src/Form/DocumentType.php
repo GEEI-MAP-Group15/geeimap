@@ -21,7 +21,10 @@ class DocumentType extends AbstractType
                 'asset_helper' => true,
             ])*/
             ->add('imageFile', FileType::class)
-            ->add('type', TextType::class)
+            ->add('type', ChoiceType::class, [
+                #'choices' => Property::HEAT
+                'choices' => $this->getChoices()
+            ])
             #->add('student')
         ;
     }
@@ -31,5 +34,15 @@ class DocumentType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Document::class,
         ]);
+    }
+    private function getChoices()
+    {
+        $choices = Application::TYPE;
+        $output = [];
+        foreach($choices as $k => $v)
+        {
+            $output[$v] = $k;
+        }
+        return $output;
     }
 }

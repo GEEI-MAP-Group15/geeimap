@@ -38,7 +38,7 @@ class FormulaireController extends AbstractController
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($student);
 			$entityManager->flush();
-			return $this->redirectToRoute('homepage');
+			return $this->redirectToRoute('student_index');
 			#return $this->redirectToRoute("app_question", ['id' => $question->getId()]);
 		}
 

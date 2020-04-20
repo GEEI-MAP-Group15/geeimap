@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Document index{% endblock %}
+
+
 
 {% block body %}
     <h1>Document index</h1>
@@ -8,19 +8,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Filename</th>
                 <th>Type</th>
-                <th>UpdatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for document in documents %}
             <tr>
-                <td>{{ document.id }}</td>
                 <td>{{ document.filename }}</td>
-                <td>{{ document.type }}</td>
+                <td>{{ document.typeType }}</td>
                 <td>
                     <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
                     <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>

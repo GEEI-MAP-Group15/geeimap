@@ -16,6 +16,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Document
 {
+    const TYPE = [
+        0 => 'Pending',
+        1 => 'Accepted',
+        2 => 'Rejected'
+    ];
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -36,7 +41,7 @@ class Document
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer", options={"default":"0"})
      */
     private $type;
 
@@ -88,7 +93,7 @@ class Document
     {
         $this->imageFile = $imageFile;
         if ($this->imageFile instanceof UploadedFile) {
-            $this->updated_at = new \DateTime('now');
+            $this->updatedAt = new \DateTime('now');
         }
         return $this;
     }
@@ -103,6 +108,10 @@ class Document
         $this->type = $type;
 
         return $this;
+    }
+    public function getTypeType(): String
+    {
+        return self::TYPE[$this->type];
     }
 
     public function getStudent(): ?Student
@@ -119,12 +128,12 @@ class Document
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

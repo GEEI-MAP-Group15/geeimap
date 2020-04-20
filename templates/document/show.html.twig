@@ -8,25 +8,25 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ document.id }}</td>
-            </tr>
-            <tr>
                 <th>Filename</th>
                 <td>{{ document.filename }}</td>
             </tr>
             <tr>
                 <th>Type</th>
-                <td>{{ document.type }}</td>
+                <td>{{ document.typeType }}</td>
             </tr>
             <tr>
                 <th>UpdatedAt</th>
                 <td>{{ document.updatedAt ? document.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+            <tr>
+                <th>Image</th>
+                <img src="{{ vich_uploader_asset(document, 'imageFile')  }}" class="card-img-top" style="width: 100%; height:auto;">
+            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('document_index') }}">back to list</a>
+    <a href="{{ path('student_index') }}">back to list</a>
 
     <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
 

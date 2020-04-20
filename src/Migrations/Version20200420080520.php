@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200326141958 extends AbstractMigration
+final class Version20200420080520 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -21,10 +21,7 @@ final class Version20200326141958 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-
-        $this->addSql('ALTER TABLE application DROP FOREIGN KEY FK_A45BDDC1CB944F1A');
-        $this->addSql('DROP INDEX UNIQ_A45BDDC1CB944F1A ON application');
-        $this->addSql('ALTER TABLE application DROP student_id');
+        $this->addSql('ALTER TABLE document ADD updated_at DATETIME NOT NULL, CHANGE name filename VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +29,6 @@ final class Version20200326141958 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE application ADD student_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE application ADD CONSTRAINT FK_A45BDDC1CB944F1A FOREIGN KEY (student_id) REFERENCES student (id) ON UPDATE NO ACTION ON DELETE NO ACTION');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_A45BDDC1CB944F1A ON application (student_id)');
+        $this->addSql('ALTER TABLE document DROP updated_at, CHANGE filename name VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`');
     }
 }
