@@ -6,7 +6,7 @@ homepage:
   controller: App\Controller\HomeController:index
 
 admission:
-  path: /admission
+  path: /admission_index
   controller: App\Controller\Admission\AdmissionController:index
 
 student:
