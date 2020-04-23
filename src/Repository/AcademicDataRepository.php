@@ -22,7 +22,68 @@ class AcademicDataRepository extends ServiceEntityRepository
     }
 
 
-    public function countCollegeScience()
+    public function applicantCollege()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT distinct college_id, count(college_id) as b FROM geeimap.academic_data GROUP BY college_id");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+    public function applicantCollegeId()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT college_id FROM geeimap.academic_data");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+    public function collegeId()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT id FROM geeimap.college");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+    public function collegeCapacity()
+    {
+
+        
+        $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
+        $connection = $em->getConnection();
+        $statement = $connection->prepare("SELECT capacity FROM geeimap.college");
+        $statement->execute();
+        $results = $statement->fetchAll();
+
+        
+        return $results;  
+ 
+    }
+
+
+    /*public function countCollegeScience()
     {
 
         
@@ -51,118 +112,67 @@ class AcademicDataRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
 
         return $result;   
-    }
-
-    /*public function countUndergraduate()
-    {
-        
-        $query = $this->createQueryBuilder('m');
-        $query -> select($query->expr()->count('m.academiclevel'));
-        $query -> where("m.academiclevel = 1");
-        return (int) $query->getQuery()->getSingleScalarResult();
-
     }*/
 
-    public function countUndergraduate()
+
+
+    public function applicantAcademiclevel()
     {
 
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT count(academiclevel_id) FROM geeimap.academic_data a JOIN geeimap.academic_level c on a.academiclevel_id=c.id WHERE c.name=:al OR c.name=:al2 OR c.name=:al3");
-        $statement->bindValue('al', "Undergraduate");
-        $statement->bindValue('al2', "undergraduate");
-        $statement->bindValue('al3', "Under Graduate");
+        $statement = $connection->prepare("SELECT distinct academiclevel_id, count(academiclevel_id) as b FROM geeimap.academic_data GROUP BY academiclevel_id");
         $statement->execute();
-        $results = $statement->fetch();
+        $results = $statement->fetchAll();
 
         
-        return array_shift($results);  
+        return $results;  
  
     }
 
-    /*public function countPostgraduate()
-    {
-        
-        $query = $this->createQueryBuilder('m');
-        $query -> select($query->expr()->count('m.academiclevel'));
-        $query -> where("m.academiclevel = 2");
-        return (int) $query->getQuery()->getSingleScalarResult();
-
-    }*/
-
-    public function countPostgraduate()
+    public function applicantAcademiclevelId()
     {
 
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT count(academiclevel_id) FROM geeimap.academic_data a JOIN geeimap.academic_level c on a.academiclevel_id=c.id WHERE c.name=:al OR c.name=:al2 OR c.name=:al3");
-        $statement->bindValue('al', "Postgraduate");
-        $statement->bindValue('al2', "postgraduate");
-        $statement->bindValue('al3', "Post Graduate");
+        $statement = $connection->prepare("SELECT academiclevel_id FROM geeimap.academic_data");
         $statement->execute();
-        $results = $statement->fetch();
+        $results = $statement->fetchAll();
 
         
-        return array_shift($results);  
+        return $results;  
  
     }
 
-    /*public function countMaster()
-    {
-        
-        $query = $this->createQueryBuilder('m');
-        $query -> select($query->expr()->count('m.academiclevel'));
-        $query -> where("m.academiclevel = 6");
-        return (int) $query->getQuery()->getSingleScalarResult();
-
-    }*/
-
-    public function countMaster()
+    public function academiclevelId()
     {
 
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT count(academiclevel_id) FROM geeimap.academic_data a JOIN geeimap.academic_level c on a.academiclevel_id=c.id WHERE c.name=:al OR c.name=:al2 OR c.name=:al3");
-        $statement->bindValue('al', "MSc");
-        $statement->bindValue('al2', "Master");
-        $statement->bindValue('al3', "master");
+        $statement = $connection->prepare("SELECT id FROM geeimap.academic_level");
         $statement->execute();
-        $results = $statement->fetch();
+        $results = $statement->fetchAll();
 
         
-        return array_shift($results);  
+        return $results;  
  
     }
 
-    /*public function countPhD()
-    {
-        
-        $query = $this->createQueryBuilder('m');
-        $query -> select($query->expr()->count('m.academiclevel'));
-        $query -> where("m.academiclevel = 5");
-        return (int) $query->getQuery()->getSingleScalarResult();
-
-    }*/
-
-
-    public function countPhD()
+    public function academiclevelCapacity()
     {
 
         
         $em = $this->getEntityManager(); // ...or getEntityManager() prior to Symfony 2.1
         $connection = $em->getConnection();
-        $statement = $connection->prepare("SELECT count(academiclevel_id) FROM geeimap.academic_data a JOIN geeimap.academic_level c on a.academiclevel_id=c.id WHERE c.name=:al OR c.name=:al1 OR c.name=:al2");
-        $statement->bindValue('al', "PhD");
-        $statement->bindValue('al1', "phd");
-        $statement->bindValue('al2', "PHD");
+        $statement = $connection->prepare("SELECT capacity FROM geeimap.academic_level");
         $statement->execute();
-        $results = $statement->fetch();
+        $results = $statement->fetchAll();
 
         
-        return array_shift($results);  
+        return $results;  
  
     }
 
@@ -233,29 +243,5 @@ class AcademicDataRepository extends ServiceEntityRepository
     // /**
     //  * @return AcademicData[] Returns an array of AcademicData objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?AcademicData
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
 }
