@@ -13,7 +13,7 @@ class ModuleType extends AbstractType
     {
         $builder
             ->add('name')
-            #->add('degrees')
+            ->add('enrolledstudent')
             #->add('academicdatas')
         ;
     }
