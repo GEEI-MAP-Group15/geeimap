@@ -4,7 +4,7 @@
 
     {% block body %}
         <div class="container mt-4">
-
+        <a href="{{ path('admission') }}" type="button" class="btn btn-warning">Back to admission index</a>
             <h1 class="text-center">Manage Applications</h1>
             {#<a href="{{ path('application_new') }}" class="btn btn-secondary">Create new degree</a>#}
             {% for message in app.flashes('success') %}

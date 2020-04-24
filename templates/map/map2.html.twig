@@ -17,7 +17,7 @@
       }
       #floating-panel {
         position: absolute;
-        top: 10px;
+        top: 45px;
         left: 25%;
         z-index: 5;
         background-color: #fff;
@@ -31,6 +31,7 @@
     </style>
 {% endblock %}
 {% block body %}
+  <a href="{{ path('admission') }}" type="button" class="btn btn-warning">Back to admission index</a>
     <div id="floating-panel">
       <input id="address" type="textbox" value="Sydney, NSW">
       <input id="submit" type="button" value="Geocode">
