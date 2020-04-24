@@ -3,31 +3,57 @@
 {% block title %}Application index{% endblock %}
 
 {% block body %}
-    <h1>Status of your application</h1>
 
-        {% if application %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for application in application %}
-            <tr>
-                <td>{{ application.id }}</td>
-                <td>{{ application.statusType }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-        {% else %}
-            <tr>
-                <h5>You don't have any application</h5>
-            </tr>
-                <a href="{{ path('formulaire') }}">Create new</a>
-        {% endif %}
-        {{ include('document/index.html.twig')}}
+    <div class="container">
+
+        <br></br>
+
+        <div class="row">
+
+            <h1 class="col-lg-12 text-center">Status of your application</h1>
+
+        </div>
+
+        <br></br>
+
+
+        <div class="row">
+
+                {% if application %}
+                    <table class="col-lg-12 table-center table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for application in application %}
+                            <tr>
+                                <td>{{ application.id }}</td>
+                                <td>{{ application.statusType }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <tr>
+                        <h5>You don't have any application</h5>
+                    </tr>
+                    <a href="{{ path('formulaire') }}">Create new</a>
+                {% endif %}
+        </div>
+
+        <br></br>
+
+        <div class="row">
+
+            <p>Click on the "Universities proposal" button if your application is rejected. You will be redirected to other universities in Baghdad that might have available place for you.</p>
+            <a href="{{ path('university_proposal') }}" class="btn-primary btn-block text-center text-dark btn-outline-default">Universities proposal</a>
+
+        </div>
+
+            {{ include('document/index.html.twig')}}
+    </div>
 
 {% endblock %}

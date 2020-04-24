@@ -3,11 +3,37 @@
 {% block title %}Edit Document{% endblock %}
 
 {% block body %}
-    <h1>Edit Document</h1>
 
-    {{ include('document/_form.html.twig', {'button_label': 'Update'}) }}
+	<div class="container">
 
-    <a href="{{ path('document_index') }}">back to list</a>
+		<br></br>
 
-    {{ include('document/_delete_form.html.twig') }}
+		<div class="row">
+
+    		<h1 class="col-lg-12 text-center">Edit Document</h1>
+
+    	</div>
+
+    	<div class="row col-lg-12">
+
+    		{{ include('document/_form.html.twig', {'button_label': 'Update'}) }}
+
+    	</div>
+
+    	<br></br>
+
+    	<div class="row">
+
+    		<a href="{{ path('document_index') }}" class="btn btn-primary btn-sm" role="button" style="width:100%;">Back to list</a>
+
+    	</div>
+
+    	<div class="row col-lg-12 btn-group-justified btn-center btn-block" style="width:100%;">
+
+    		{{ include('document/_delete_form.html.twig') }}
+
+    	</div>
+
+    </div>
+
 {% endblock %}

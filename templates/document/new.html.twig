@@ -3,10 +3,33 @@
 {% block title %}New Document{% endblock %}
 
 {% block body %}
-    <h1>Create new Document</h1>
 
-    {{ include('document/_form.html.twig') }}
+	<div class="container">
+
+		<br></br>
+
+		<div class="row">
+
+    		<h1 class="col-lg-12 text-center">Add new Document</h1>
+
+    	</div>
+
+    	<br></br>
+
+    	<div class="row">
+
+    		<div class="col-lg-12">
+
+    			{{ include('document/_form.html.twig') }}
+
+    		</div>
+
+    	</div>
+
+    	<br></br>
     
 
-    <a href="{{ path('document_index') }}">back to list</a>
+    	<a href="{{ path('document_index') }}" class="btn-primary btn-block text-center text-dark btn-outline-default">Back to list</a>
+
+    </div>
 {% endblock %}

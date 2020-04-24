@@ -3,38 +3,80 @@
 
 
 {% block body %}
-    <h1>Documents Uploaded</h1>
-    {% if not is_granted('ROLE_ADMIN') %}
-    <p>Please, upload your evidences here.</p>
-    {% endif %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Filename</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for document in documents %}
-            <tr>
-                <td>{{ document.filename }}</td>
-                <td>{{ document.typeType }}</td>
-                <td>
-                    <a href="{{ path('document_show', {'id': document.id}) }}">show</a>
-                    {% if not is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
-                {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    {% if not is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('document_new') }}">Upload new evidence</a>
-    {% endif %}
+
+    <div class="container">
+
+        <br></br>
+
+        <div class="row">
+
+            <h1 class="col-lg-12 text-center">Documents Uploaded</h1>
+
+        </div>
+
+        <br></br>
+
+        <div class="row">
+    
+            {% if not is_granted('ROLE_ADMIN') %}
+
+                <p>Please, upload your evidences here.</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="row">
+
+            <table class="col-lg-12 table-center table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Type</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for document in documents %}
+
+                        <tr>
+                            <td>{{ document.filename }}</td>
+                            <td>{{ document.typeType }}</td>
+                            <td>
+                                <a href="{{ path('document_show', {'id': document.id}) }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:50%;">show</a>
+                                {% if not is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('document_edit', {'id': document.id}) }}" class="btn btn-default btn-outline-secondary btn-sm" role="button" style="width:50%;">edit</a>
+
+            {% endif %}
+                            </td>
+                        </tr>
+
+                    {% else %}
+
+                        <tr>
+                            <td colspan="6">no records found</td>
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <br></br>
+
+        <div class="row">
+
+            {% if not is_granted('ROLE_ADMIN') %}
+
+                <a href="{{ path('document_new') }}" class="btn-primary btn-block text-center text-dark btn-outline-default">Upload new evidence</a>
+
+            {% endif %}
+
+        </div>
+
+    
 {% endblock %}
