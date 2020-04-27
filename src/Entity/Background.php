@@ -28,8 +28,9 @@ class Background
 
 
     const SECURITY_REASON = [
-        0 => 'Reason 1',
-        1 => 'Resaon 2'
+        0 => 'Change of house',
+        1 => 'University no longer provides courses'
+        2 => 'Unable to go to university'
     ];
     /**
      * @ORM\Column(type="integer", options={"default":"0"})
